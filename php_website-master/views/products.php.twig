@@ -1,0 +1,95 @@
+{% extends '_template.html.twig' %}
+
+{% block css %}
+
+    @import "css/product.css";
+
+    {% endblock %}
+
+
+{% block header %}
+
+
+    {% endblock %}
+
+{% block script %}
+    function confirm_click(){
+        return confirm("Are you sure ?");
+    }
+    {% endblock %}
+
+{% block extraOptions %}
+    <li><a href="/index.php?action=addProduct">Add Product</a class="button"></li>
+    {% endblock %}
+
+
+
+{% block main %}
+
+
+
+
+
+    <table>
+
+        <tr>
+            <th colspan="7">
+                <h2>Products Available</h2>
+            </th>
+        </tr>
+
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+
+        {% for product in products %}
+
+            <tr>
+                <td>
+                    {{ product.id }}
+                </td>
+
+                <td>
+                    {{ product.Name }}
+                </td>
+
+                <td>
+                    {{ product.Price }}
+                </td>
+
+                <td>
+                    <img src="images/{{ product.Image}}" class="image" >
+                </td>
+
+                <td>
+                    {{ product.Description}}
+                </td>
+
+                <td>
+
+                    <a href="index.php?action=editProduct&id={{ product.id }}">Edit</a>
+
+                </td>
+                <td>
+                    <a title="Delete User"   href="index.php?action=deleteProduct&id={{ product.id }}">Delete</a>
+
+                    {#onClick="return confirm_click();"#}
+
+                </td>
+            </tr>
+
+
+    {% endfor %}
+
+</table>
+
+
+
+
+{% endblock %}

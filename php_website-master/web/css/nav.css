@@ -1,0 +1,51 @@
+/*
+
+	Nav
+	
+*/
+nav
+{
+    margin-left:-40px;
+    background-color: #FDFEFE;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    margin-bottom: 1rem;
+}
+
+
+nav ul
+{
+    display:flex;
+    flex-wrap:wrap;
+    list-style-type:none;
+    margin-top: 0px;
+}
+
+nav li
+{
+    flex:1 0 6rem;
+    font-size: 2rem;
+    margin-bottom: -15px;
+}
+
+nav ul a
+{
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    padding: 2rem;
+}
+
+.button
+{
+    
+    
+}
+
+a:hover
+{
+    background-color:#D0D3D4;
+    color:red;
+}
+
+

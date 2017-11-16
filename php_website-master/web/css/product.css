@@ -1,0 +1,44 @@
+
+h1, h2{
+    text-align:center;
+}
+
+
+form{
+    width:100%;
+    margin:auto;
+    margin-top:2rem;
+    margin-bottom:2rem;
+}
+
+table{
+    width:80%;
+    border:2px solid dodgerblue;
+    margin:auto;
+}
+p{
+    margin-left:1.5rem;
+}
+
+.image{
+    height:50%;
+}
+
+
+table th{
+    padding:1rem;
+    border:1px solid dodgerblue;
+}
+
+table tr{
+    border:1px solid dodgerblue;
+    text-align:center;
+}
+
+td{
+    padding:1rem;
+    text-align:left;
+    border:1px solid dodgerblue;
+}
+
+

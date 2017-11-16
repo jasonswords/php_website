@@ -1,0 +1,33 @@
+h1, h3{
+text-align:center;
+}
+
+
+#container 
+{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#container
+{
+	flex: 1 0 10%;
+	text-align:center;
+}
+
+#container .image {
+	text-align: center;
+}
+
+
+.image img
+{
+	width: 100%;
+    min-height:  100%;
+    min-width: 100%;
+	max-width: 100%;
+    max-height:  100%;
+    text-align: center;
+    vertical-align: middle;
+	border: 0.1rem solid black;
+}

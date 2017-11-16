@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @import "/css/header.css";
+        @import "/css/nav.css";
+        @import "/css/layout.css";
+        @import "/css/footer.css";
+        {% block css%}{% endblock %}
+    </style>
+    <script type="text/javascript">
+        {% block script %}{% endblock %}
+    </script>
+
+
+    <title> {{pageTitle}} page</title>
+</head>
+
+<body>
+
+<header>
+
+    <div id="headerLeft">
+
+        <img src="images/icon.png" alt="Drone Icon">
+
+    </div>
+
+    <div id="headerCenter">
+        <h1>Drone Racing</h1>
+    </div>
+
+    <div id="headerRight">
+
+                {% if username is defined %}
+
+                     You are logged in as: <strong>{{ username }}</strong>
+
+                    {% else %}
+
+                     <a href="/index.php?action=login" id="mainLogin">Login/Register</a>
+
+        {% endif %}
+        {% block header %}{% endblock %}
+
+    </div>
+
+</header>
+
+
+
+<!-----------------NAV BAR------------------------------>
+
+<nav>
+    <ul>
+        <li><a href="/index.php?action=index">Home</a class="button" id="currentPage"></li>
+        <li><a href="/index.php?action=displayProduct">Products</a class="button"></li>
+        <li><a href="/index.php?action=gallery">Gallery</a class="button"></li>
+        <li><a href="/index.php?action=about">About</a class="button"></li>
+    </ul>
+</nav>
+
+<nav>
+    <ul>
+        <li><a href="/index.php?action=setupDatabase">Setup Database</a class="button" id="currentPage"></li>
+        <li><a href="/index.php?action=deleteDatabase">Delete DataBase</a class="button"></li>
+        <li><a href="/index.php?action=accounts">Accounts</a class="button"></li>
+        <li><a href="/index.php?action=staff">Staff</a class="button"></li>
+        <li><a href="/index.php?action=createStaff">Add Staff</a class="button"></li>
+    </ul>
+</nav>
+
+<div id="container">
+
+    {% block main %}
+
+    {% endblock %}
+
+    {% block loginError %}
+    {% endblock %}
+
+</div>
+
+<!------------------------------FOOTER---------------------------------->
+
+
+<footer>
+
+    <div id="leftFooter">
+        <ul>
+            <li><a href="mailto:B00099344@student.itb.ie?Sunject=Hello%20again" target="_top"><img src="images/email.png" alt="Email me"></a></li>
+            <li><a href="https://www.facebook.com"><img src="images/facebook.png" alt="Facebook"></a></li>
+            <li><a href="http://twitter.com"><img src ="images/twitter.png" alt="Twitter"></a></li>
+            <li><a href="https://www.linkedin.com/nhome"><img src="images/linkedin.png" alt ="Linkedin"></a></li>
+        </ul>
+    </div>
+
+    <div id="centerFooter">
+        <h1>B00099344 &copy; 2017</h1>
+    </div>
+
+    <div id="rightFooter">
+
+        <p class="middle">Icons made by Freepik<br> from<br>
+
+            <a href="http://www.flaticon.com">www.Flaticon.com</a></p>
+    </div>
+
+</footer>
+
+</body>
+</html>
