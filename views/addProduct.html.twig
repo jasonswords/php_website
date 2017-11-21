@@ -1,0 +1,51 @@
+{% extends '_template.html.twig' %}
+
+
+
+{% block css %}
+
+    @import "css/addProduct.css";
+
+{% endblock %}
+
+
+
+{%  block header %}
+
+
+
+{% endblock %}
+
+
+
+
+{% block main %}
+
+    <form action="index.php?action=processProduct" method="post" target="_self"  enctype="multipart/form-data">
+        <!---<input type="hidden" name="action" value="processProduct"> ---->
+
+        <h1>Create Product</h1>
+
+
+        <!----------------------PERSONAL DETAILS----------------------->
+
+        <fieldset>
+
+            <label>Product Name</label> <input type="text" name="name" required placeholder="Item name"><br>
+            <label>Product Price</label> <input type="text" name="price" required placeholder="Item Price"><br>
+            <label>Product Image</label> <input type="text" name="image" required placeholder="Item Image URL"><br>
+            <label>Product Description</label> <textarea rows="10" cols="21" name="description" placeholder="Optional"></textarea><br>
+
+        </fieldset>
+        <br>
+        <div id="button">
+
+            <input type="submit" value="Add" id="submit">
+            <input type="reset" value="Clear" id="reset"><br>
+        </div>
+    </form>
+
+{% endblock %}
+
+
+

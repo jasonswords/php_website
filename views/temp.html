@@ -1,0 +1,110 @@
+{% extends '_template.html.twig' %}
+
+{% block css %}
+
+@import "css/header.css";
+@import "css/nav.css";
+@import "css/layout.css";
+@import "css/footer.css";
+@import "css/product.css";
+
+{% endblock %}
+
+
+
+{% block header %}
+
+<div id="login">
+    <label id="loginLabel">UserName:</label><input type ="text" name = "userName" id="loginSpace" placeholder="Enter username" autofocus><br>
+    <label id="loginLabel">Password:</label><input type= "password" name = "password" id="loginSpace" placeholder="Enter password"><br><br>
+    <label id="loginLabel"> &nbsp;</label><a href="/index.php?action=createAccount" id="mainLogin">Create Account</a>
+</div>
+
+{% endblock %}
+
+
+{% block priveledges %}
+
+<nav>
+    <ul>
+        <li><a href="/index.php?action=setupDatabase">Setup Database</a class="button" id="currentPage"></li>
+        <li><a href="/index.php?action=displayProduct">Products</a class="button"></li>
+        <li><a href="/index.php?action=gallery">Gallery</a class="button"></li>
+        <li><a href="/index.php?action=about">About</a class="button"></li>
+    </ul>
+</nav>
+
+{% endblock %}
+
+
+
+{% block main %}
+
+<form method="post" action="index.php">
+    <input type="hidden" name="action" value="processProductUpdate">
+
+    Id:
+    <input type="text"
+           name="id"
+           value="{{ product.id }}"
+           readonly
+    >
+    <p>
+        First name:
+        <input type="text"
+               name="firstName"
+               value="{{ account.firstName }}">
+    </p>
+    <p>
+        Second name:
+        <input type="text"
+               name="secondName"
+               value="{{ account.secondName }}">
+    </p>
+    <p>
+        country:
+        <input type="text"
+               name="country"
+               value="{{ account.country }}">
+    </p>
+
+    <p>
+        User name:
+        <input type="text"
+               name="password"
+               value="{{ account.userName }}">
+    </p>
+
+    <p>
+        Password:
+        <input type="text"
+               name="password"
+               value="{{ account.password }}">
+    </p>
+
+    <input type="submit" value="UPDATE">
+</form>
+
+
+
+
+
+{% endblock %}
+
+
+<section class = "image"><img src="/images/image1.jpg" alt="name"></section>
+<section class = "image"><img src="/images/image2.jpg" alt="name"></section>
+<section class = "image"><img src="/images/image3.jpg" alt="name"></section>
+<section class = "image"><img src="/images/tshirt.jpg" alt="name"></section>
+<section class = "image"><img src="/images/image4.jpg" alt="name"></section>
+<section class = "image"><img src="/images/image5.jpg" alt="name"></section>
+<section class = "image"><img src="/images/image6.jpg" alt="name"></section>
+<section class = "image"><img src="/images/image7.jpg" alt="name"></section>
+<section class = "image"><img src="/images/cup.jpg" alt="name"></section>
+<section class = "image"><img src="/images/futaba.jpg" alt="name"></section>
+<section class = "image"><img src="/images/goggles.jpg" alt="name"></section>
+<section class = "image"><img src="/images/motor.jpg" alt="name"></section>
+<section class = "image"><img src="/images/motor2.jpg" alt="name"></section>
+<section class = "image"><img src="/images/taranis.png" alt="name"></section>
+<section class = "image"><img src="/images/drone.jpg" alt="name"></section>
+<section class = "image"><img src="/images/image8.jpg" alt="name"></section>
