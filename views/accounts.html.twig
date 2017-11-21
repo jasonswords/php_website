@@ -1,0 +1,93 @@
+{% extends '_template.html.twig' %}
+
+
+
+{% block css %}
+
+    @import "css/product.css";
+
+{% endblock %}
+
+
+
+
+{% block header %}
+
+
+
+{% endblock %}
+
+
+
+
+{% block main %}
+
+
+<br>
+    <table>
+        <tr>
+            <th colspan="8">
+            <h2>Accounts Available</h2>
+            </th>
+        </tr>
+
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Second Name</th>
+            <th>Country</th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+
+        {% for account in accounts %}
+
+            <tr>
+                <td>
+                    {{ account.id }}
+                </td>
+
+                <td>
+                    {{ account.firstName }}
+                </td>
+
+                <td>
+                    {{ account.secondName }}
+                </td>
+
+                <td>
+                    {{ account.country }}
+                </td>
+
+                <td>
+                    {{ account.userName }}
+                </td>
+
+                <td>
+                    {{ account.password }}
+                </td>
+
+                <td>
+
+                    <a href="index.php?action=editAccount&id={{ account.id }}">Edit</a>
+
+                </td>
+                <td>
+                    <a title="Delete User"   href="index.php?action=deleteAccount&id={{ account.id }}">Delete</a>
+
+                    {#onClick="return confirm_click();"#}
+
+                </td>
+            </tr>
+
+
+        {% endfor %}
+
+    </table>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends '_template.html.twig' %}
+
+{% block css %}
+
+    @import "/css/editForm.css";
+
+    {% endblock %}
+
+
+{% block header %}
+
+
+    {% endblock %}
+
+{% block script %}
+
+    {% endblock %}
+
+
+{% block main %}
+
+
+    <form action="/index.php?action=processLeagueUpdate"  method="post" >
+        {#<input type="hidden" name="action" value="processLeagueUpdate">#}
+
+
+        <h1>Edit League</h1>
+
+
+        <label>Id:</label><input type="text" name="id" value="{{ league.id }}" readonly>
+        <br>
+        <label>Name:</label><input type="text" name="name" value="{{ league.name }}">
+        <br>
+        <label>Country:</label><input type="text" name="country" value="{{ league.country }}">
+        <br>
+        <label>Drone:</label><input type="text" name="drone" value="{{ league.drone }}">
+        <br>
+        <label>Position:</label><input type="text"name="position" value="{{ league.position }}">
+        <br>
+
+        <label> </label><input type="submit" value="Update" id="submitButton">
+
+    </form>
+
+
+
+{% endblock %}

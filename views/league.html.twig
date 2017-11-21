@@ -1,0 +1,67 @@
+{% extends '_template.html.twig'%}
+
+
+{% block css %}
+
+@import "/css/leaguePage.css";
+
+{% endblock %}
+
+{% block script %}
+    function confirm_click(){
+    return confirm("Are you sure ?");
+    }
+{% endblock %}
+
+
+{% block main %}
+
+    <table>
+
+        <tr>
+            <th colspan="7">
+                <h1>League Results</h1>
+                <h2><a href="/index.php?action=addLeagueMember&id={{ league.id }}" id="addLink">Add Another Member</a></h2>
+            </th>
+
+        </tr>
+
+        <tr>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Drone</th>
+            <th>World Ranking</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+
+        {% for league in leagueMember %}
+
+            <tr>
+                <td>
+                    {{ league.name }}
+                </td>
+                <td>
+                    {{ league.country }}
+                </td>
+                <td>
+                    <img src="/images/{{ league.drone }}" class="image" >
+                </td>
+                <td>
+                    {{ league.position }}
+                </td>
+                <td>
+                    <a href="/index.php?action=editLeagueMember&id={{ league.id }}">Edit</a>
+                </td>
+                <td>
+                    <a title="Delete User" onClick="return confirm_click();"  href="/index.php?action=deleteLeagueMember&id={{ league.id }}">Delete</a>
+                </td>
+            </tr>
+
+        {% endfor %}
+
+    </table>
+
+
+
+{% endblock %}

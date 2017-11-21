@@ -1,0 +1,35 @@
+form{
+    margin:auto;
+    width:30rem;
+    border: .2rem solid black;
+    padding:1rem;
+}
+
+input:focus{
+    background-color:lavender;
+}
+
+label{
+    margin-bottom:1rem;
+    text-align:left;
+    display:block;
+    float:left;
+    width:10rem;
+}
+
+
+#submitButton{
+    margin-left:4rem;
+    color:blue;
+}
+#submit{
+    margin-right:2rem;
+}
+
+h1{
+    text-align:center;
+}
+
+br{
+    clear:both;
+}
