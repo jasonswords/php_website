@@ -1,0 +1,38 @@
+{% extends '_template.html.twig' %}
+
+{% block accountsCurrent %}
+    current_page
+{% endblock %}
+
+
+{% block css %}
+    @import "css/singleProduct.css";
+{% endblock %}
+
+
+{% block main %}
+
+    <div id="singleProduct">
+
+            <div id="title">
+                <h2>Product Name</h2>
+                <h1>{{ product.name }}</h1>
+            </div>
+
+            <div id="productImage">
+                <h3><img src="images/{{ product.Image}}"></h3>
+            </div>
+
+            <div id="description">
+                <h2>Description</h2>
+                <h3>{{ product.description }}</h3>
+            </div>
+
+            <div id="price">
+                <h2>Price</h2>
+                <h3>{{ product.price }}</h3>
+            </div>
+
+    </div>
+
+{% endblock %}

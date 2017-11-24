@@ -1,0 +1,45 @@
+#singleProduct{
+    margin:auto;
+    width:60%;
+    padding:1rem;
+    margin-top:3rem;
+    margin-bottom:3rem;
+    border-top:.1rem solid #550a87;
+
+}
+
+#singleProduct h1{
+    color:darkgreen;
+    text-align:center;
+}
+
+h2{
+    text-decoration: underline;
+    color: #550a87;
+}
+
+h3{
+    color:darkgreen;
+    font-size: 2rem;
+}
+
+
+#title{
+
+}
+
+
+#productImage{
+    margin:auto;
+    text-align:center;
+}
+
+#description{
+    padding:2rem;
+    text-align:center;
+}
+
+#price{
+    padding:2rem;
+    text-align:center;
+}

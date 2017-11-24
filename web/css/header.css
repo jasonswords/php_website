@@ -1,0 +1,53 @@
+
+
+header
+{
+    display:flex;
+    flex-wrap:wrap;
+    border-bottom: .2rem solid #550a87;;
+}
+
+#headerLeft{
+    padding-top: .5rem;
+    flex:1 0 10%;
+    text-align:center;
+}
+
+#headerCenter{
+    flex:1 0 10%;
+    text-align:center;
+    color: #550a87;
+}
+
+#headerRight{
+    flex:1 0 10%;
+    text-align:center;
+    padding-top: 3rem;
+}
+
+#headerRightLogin{
+    flex:1 0 20%;
+    text-align:center;
+    padding-top: .5rem;
+}
+
+
+
+#loginLabel{
+    display:block;
+    float:left;
+    text-align: right;
+    width:60%;
+    color: #550a87;
+}
+#mainLogin
+{
+    text-decoration: none;
+    padding: 1rem;
+    color: #550a87;
+}
+
+h1
+{
+    font-size: 3rem;
+}

@@ -1,0 +1,78 @@
+{% extends '_template.html.twig' %}
+
+
+{% block css %}
+    @import "/css/staff.css";
+{% endblock %}
+
+
+{% block staffCurrent %}
+    current_page
+{% endblock %}
+
+
+{% block script %}
+    function confirm_click(){
+    return confirm("Are you sure ?");
+    }
+{% endblock %}
+
+
+{% block main %}
+
+    <table>
+
+        <tr>
+            <th colspan="7">
+                <h1>Staff</h1>
+                <h2><a href="/index.php?action=createStaff" id="addStaffLink">Add Staff</a></h2>
+            </th>
+        </tr>
+
+        <tr>
+            <th>Id</th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Admin</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+
+        {% for member in staff %}
+
+            <tr>
+                <td>
+                    {{ member.id}}
+                </td>
+                <td>
+                    {{ member.userName}}
+                </td>
+
+                <td>
+                    {{ member.password}}
+                </td>
+
+                <td>
+            {% if member.privilege  == 1 %}
+                        Admin
+            {% else %}
+                    Standard
+                {% endif %}
+                </td>
+
+                <td>
+
+                    <a href="/index.php?action=editStaff&id={{ member.id }}">Edit</a>
+
+                </td>
+                <td>
+                    <a title="Delete User" onClick="return confirm_click();"  href="/index.php?action=deleteStaff&id={{ member.id }}">Delete</a>
+                </td>
+            </tr>
+
+
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

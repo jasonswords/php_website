@@ -1,0 +1,81 @@
+{% extends '_template.html.twig' %}
+
+{% block css %}
+    @import "/css/product.css";
+    {% endblock %}
+
+{% block displayProductCurrent %}
+    current_page
+{% endblock %}
+
+{% block script %}
+    function confirm_click(){
+        return confirm("Are you sure ?");
+    }
+    {% endblock %}
+
+
+{% block main %}
+
+
+    <table>
+
+        <tr>
+            <th colspan="7">
+                <h1>Products Available</h1>
+                <h2><a href="/index.php?action=addProduct" id="addProductLink">Add Product</a ></h2>
+            </th>
+        </tr>
+
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+
+        {% for product in products %}
+
+            <tr>
+                <td>
+                    {{ product.id }}
+                </td>
+
+                <td>
+                    {{ product.Name }}
+                </td>
+
+                <td>
+                    {{ product.Price }}
+                </td>
+
+                <td>
+                    <a href="index.php?action=displaySingleProduct&id={{ product.id }}"><img src="images/{{ product.Image}}" class="image" > </a>
+                </td>
+
+                <td>
+                    {{ product.Description}}
+                </td>
+
+                <td>
+
+                    <a href="index.php?action=editProduct&id={{ product.id }}">Edit</a>
+
+                </td>
+                <td>
+                    <a title="Delete User"  onClick="return confirm_click();" href="index.php?action=deleteProduct&id={{ product.id }}">Delete</a>
+                </td>
+            </tr>
+
+
+    {% endfor %}
+
+</table>
+
+
+
+
+{% endblock %}

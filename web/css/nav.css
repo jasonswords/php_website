@@ -1,0 +1,48 @@
+/*
+
+	Nav
+	
+*/
+nav
+{
+    margin-left:-40px;
+    margin-bottom: .5rem;
+}
+
+
+nav ul
+{
+    display:flex;
+    flex-wrap:wrap;
+    list-style-type:none;
+}
+
+nav li
+{
+    flex:1 0 6rem;
+    font-size: 2rem;
+    margin-bottom: -15px;
+}
+
+nav ul a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 1rem;
+}
+
+a:hover
+{
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    border-radius: 1rem;
+}
+
+.image:hover{
+    border:.2rem solid darkgreen ;
+}
+
+.current_page {
+    color: green;
+    font-weight: bold;
+}
+

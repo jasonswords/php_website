@@ -1,0 +1,47 @@
+{% extends '_template.html.twig' %}
+
+
+{% block css %}
+
+    @import "css/product.css";
+    @import "css/editForm.css";
+
+{% endblock %}
+
+
+
+{% block header %}
+
+
+
+{% endblock %}
+
+
+
+{% block main %}
+
+    <form action="/index.php?action=processStaffUpdate"  method="post" >
+
+
+
+                              <h1>Edit Account</h1>
+
+
+        <label>Id:</label><input type="text" name="id" value="{{ staff.id }}" readonly>
+        <br>
+        <label>User Name:</label><input type="text" name="userName" value="{{ staff.userName }}">
+        <br>
+        <label>Password:</label><input type="password" name="password1" value="{{ staff.password }}">
+        <br>
+        <label>Password:</label><input type="password" name="password2" value="{{ staff.password }}">
+        <br>
+        <label>Privilege:</label><input type="text" name="privilege" value="{{ staff.privilege }}" readonly>
+        <br>
+
+        <label> </label><input type="submit" value="Update" id="submitButton">
+
+    </form>
+
+
+
+{% endblock %}
