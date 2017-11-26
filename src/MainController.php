@@ -5,12 +5,10 @@ namespace Itb;
 class MainController
 {
     private $twig;
-    private $username;
 
-    public function __construct($twig, $username)
+    public function __construct($twig)
     {
         $this->twig = $twig;
-        $this->username = $username;
     }
 
 
@@ -23,6 +21,7 @@ class MainController
         if(!empty($username)){
             $argsArray['username'] = $username;
         }
+
         $html = $this->twig->render($template, $argsArray);
         print $html;
     }
@@ -72,26 +71,38 @@ class MainController
         print $html;
     }
 
-    public function editAccountAction($id){
-        $accountRepository = new AccountRepository();
-        $account = $accountRepository->getOneById($id);
-        $template = 'editAccount.html.twig';
+    public function editVisitorAction($id){
+        $visitorRepository = new VisitorRepository();
+        $visitor = $visitorRepository->getOneById($id);
+        $template = 'editVisitor.html.twig';
         $args = [
-            'pageTitle' => 'Edit Account',
-            'account' => $account
+            'pageTitle' => 'Edit Visitor',
+            'visitor' => $visitor
         ];
         $html = $this->twig->render($template, $args);
         print $html;
     }
 
-    public function accountsAction(){
-        $accountRepository = new AccountRepository();
-        $accounts = $accountRepository->getAllAccounts();
-        $template = 'accounts.html.twig';
+    public function visitorAction(){
+        $visitorRepository = new VisitorRepository();
+        $visitors = $visitorRepository->getAllAccounts();
+        $template = 'visitor.html.twig';
         $args = [
-            'pageTitle' => 'Accounts Available',
-            'accounts' => $accounts
+            'pageTitle' => 'Visitor Signed Up',
+            'visitors' => $visitors
         ];
+        $html = $this->twig->render($template, $args);
+        print $html;
+    }
+
+    public function viewVisitorAction($id){
+        $visitorRepository = new VisitorRepository();
+        $visitor = $visitorRepository->getOneById($id);
+        $template = 'viewSingleVisitor.html.twig';
+        $args =[
+            'pageTitle' => 'View Visitor',
+            'visitor' => $visitor
+         ];
         $html = $this->twig->render($template, $args);
         print $html;
     }
@@ -108,8 +119,8 @@ class MainController
         print $html;
     }
 
-    public function createAccountAction(){
-        $template = 'createAccount.html.twig';
+    public function createVisitorAction(){
+        $template = 'createVisitor.html.twig';
         $argsArray = [
             'pageTitle' => 'Create Account'
         ];
@@ -124,10 +135,10 @@ class MainController
         exit();
     }
 
-    public function deleteAccountAction($id){
-        $accountRepository = new AccountRepository();
-        $accountRepository->deleteOneAccount($id);
-        header("Location: index.php?action=accounts");
+    public function deleteVisitorAction($id){
+        $visitorRepository = new VisitorRepository();
+        $visitorRepository->deleteOneAccount($id);
+        header("Location: index.php?action=visitor");
         exit();
     }
 
@@ -138,10 +149,10 @@ class MainController
         exit();
     }
 
-    public function processAccountUpdateAction($id, $firstName, $secondName, $country, $userName, $password){
-        $accountRepository = new AccountRepository();
-        $accountRepository->updateAccountTable($id, $firstName, $secondName, $country, $userName, $password);
-        header("Location: index.php?action=products");
+    public function processVisitorUpdateAction($id, $firstName, $secondName, $country, $email){
+        $visitorRepository = new VisitorRepository();
+        $visitorRepository->updateVisitorTable($id, $firstName, $secondName, $country, $email);
+        header("Location: index.php?action=visitor");
         exit();
     }
 

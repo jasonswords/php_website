@@ -23,9 +23,21 @@
     <table>
 
         <tr>
-            <th colspan="7">
+
+            <th
+
+    {% if session.privilege == 'Administrator' %}
+        colspan="7"
+        #{% else %}
+        colspan="5"
+        {% endif %}
+            >
                 <h1>Staff</h1>
+
+    {% if session.privilege == 'Administrator' %}
                 <h2><a href="/index.php?action=createStaff" id="addStaffLink">Add Staff</a></h2>
+        {% endif %}
+
             </th>
         </tr>
 
@@ -33,9 +45,11 @@
             <th>Id</th>
             <th>User Name</th>
             <th>Password</th>
-            <th>Admin</th>
+            <th>Account</th>
+            {% if session.privilege == 'Administrator' %}
             <th>Edit</th>
             <th>Delete</th>
+                {% endif %}
         </tr>
 
         {% for member in staff %}
@@ -60,14 +74,14 @@
                 {% endif %}
                 </td>
 
+            {% if session.privilege == 'Administrator' %}
                 <td>
-
                     <a href="/index.php?action=editStaff&id={{ member.id }}">Edit</a>
-
                 </td>
                 <td>
                     <a title="Delete User" onClick="return confirm_click();"  href="/index.php?action=deleteStaff&id={{ member.id }}">Delete</a>
                 </td>
+                {% endif %}
             </tr>
 
 

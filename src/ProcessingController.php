@@ -7,36 +7,28 @@ namespace Itb;
 class ProcessingController
 {
     private $twig;
-    private $username;
 
-    public function __construct($twig, $username)
+    public function __construct($twig)
     {
         $this->twig = $twig;
-        $this->username = $username;
     }
 
-    public function processAccountFormAction(){
+    public function processVisitorFormAction(){
 
         $firstName = filter_input(INPUT_POST, 'firstName');
         $secondName = filter_input(INPUT_POST, 'secondName');
         $country = filter_input(INPUT_POST, 'country');
-        $user1 = filter_input(INPUT_POST, 'user1');
-        $user2 = filter_input(INPUT_POST, 'user2');
-        $password1 = filter_input(INPUT_POST, 'password1');
-        $hashed = password_hash(filter_input(INPUT_POST, 'password2'), PASSWORD_DEFAULT);
-        if(($user1 == $user2) && (password_verify($password1,$hashed)))
-        {
-            $m = new Account();
-            $m->setFirstName($firstName);
-            $m->setSecondName($secondName);
-            $m->setCountry($country);
-            $m->setPassword($hashed);
-            $m->setUser($user1);
-            $accountRepository = new AccountRepository();
-            $accountRepository->createTableAccounts();
-            $accountRepository->insertAccount($m);
-        }
-        else
+        $email = filter_input(INPUT_POST, 'email');
+
+            $v = new Visitor();
+            $v->setFirstName($firstName);
+            $v->setSecondName($secondName);
+            $v->setCountry($country);
+            $v->setEmail($email);
+            $visitorRepository = new VisitorRepository();
+            $visitorRepository->createTableAccounts();
+            $visitorRepository->insertAccount($v);
+
         header("Location: index.php?action=error1");
         exit();
     }
@@ -100,8 +92,28 @@ class ProcessingController
         $staffRepository = new StaffRepository();
         $staffRepository->createTableStaff();
         $staffRepository->updateStaffTable($id, $userName, $password, $privilege);
-        header("Location: index.php?action=displayStaff");
-        exit();
+
+    }
+
+    public function deleteSession(){
+        $_SESSION = [];
+
+        if (ini_get('session.use_cookies')){
+            $params = session_get_cookie_params();
+            setcookie(
+                session_name(),
+                '',
+                time() - 42000,
+                $params['path'],
+                $params['domain'],
+                $params['secure'],
+                $params['httponly']
+            );
+        }
+        session_destroy();
+
+        header("Location: index.php");
+
     }
 
     public function setupDatabaseAction(){

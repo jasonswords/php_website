@@ -21,9 +21,18 @@
     <table>
 
         <tr>
-            <th colspan="7">
+            <th
+    {% if session.privilege == ( 'Standard' or 'Administrator')  %}
+        colspan="7"
+        {% else %}
+            colspan="5"
+            {% endif %}
+            >
                 <h1>Products Available</h1>
+
+    {% if session.privilege == ( 'Standard' or 'Administrator')  %}
                 <h2><a href="/index.php?action=addProduct" id="addProductLink">Add Product</a ></h2>
+        {% endif %}
             </th>
         </tr>
 
@@ -33,8 +42,12 @@
             <th>Price</th>
             <th>Image</th>
             <th>Description</th>
+
+    {% if session.privilege == ( 'Standard' or 'Administrator')  %}
             <th>Edit</th>
             <th>Delete</th>
+        {% endif %}
+
         </tr>
 
         {% for product in products %}
@@ -43,39 +56,34 @@
                 <td>
                     {{ product.id }}
                 </td>
-
                 <td>
                     {{ product.Name }}
                 </td>
-
                 <td>
                     {{ product.Price }}
                 </td>
-
                 <td>
                     <a href="index.php?action=displaySingleProduct&id={{ product.id }}"><img src="images/{{ product.Image}}" class="image" > </a>
                 </td>
-
                 <td>
                     {{ product.Description}}
                 </td>
 
+            {% if session.privilege == ( 'Standard' or 'Administrator')  %}
                 <td>
-
                     <a href="index.php?action=editProduct&id={{ product.id }}">Edit</a>
-
                 </td>
                 <td>
                     <a title="Delete User"  onClick="return confirm_click();" href="index.php?action=deleteProduct&id={{ product.id }}">Delete</a>
                 </td>
+                {% endif %}
+
             </tr>
 
 
     {% endfor %}
 
 </table>
-
-
 
 
 {% endblock %}

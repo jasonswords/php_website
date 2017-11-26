@@ -10,13 +10,25 @@ form
 
 label
 {
-    text-align: right;
+    padding-left:3rem;
     display: block;
     float: left;
-    width: 6rem;
 }
 
 br
 {
     clear:both;
+}
+
+#createAccountLink{
+    text-align: right;
+    padding: .5rem;
+    color: deeppink;
+}
+#createAccountLink:hover{
+    text-decoration: none;
+}
+
+#loginPassword, #userName{
+    margin-right:7rem;
 }

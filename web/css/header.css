@@ -4,7 +4,7 @@ header
 {
     display:flex;
     flex-wrap:wrap;
-    border-bottom: .2rem solid #550a87;;
+    border-bottom: .2rem solid #550a87;
 }
 
 #headerLeft{
@@ -22,15 +22,8 @@ header
 #headerRight{
     flex:1 0 10%;
     text-align:center;
-    padding-top: 3rem;
+    padding-top: 2.5rem;
 }
-
-#headerRightLogin{
-    flex:1 0 20%;
-    text-align:center;
-    padding-top: .5rem;
-}
-
 
 
 #loginLabel{
@@ -44,6 +37,11 @@ header
 {
     text-decoration: none;
     padding: 1rem;
+    color: #550a87;
+}
+
+#loginButton{
+    text-decoration: none;
     color: #550a87;
 }
 

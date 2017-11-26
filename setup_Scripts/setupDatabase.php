@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Itb\ProductRepository;
-use Itb\AccountRepository;
+use Itb\VisitorRepository;
 
 $faker = Faker\Factory::create();
 
@@ -30,19 +30,18 @@ for($i=0;$i<10;$i++){
 
 // ---------  Populate Accounts Database  ----------
 
-$accountsRepository = new AccountRepository();
+$accountsRepository = new VisitorRepository();
 
 $accountsRepository->createTableAccounts();
 
 for($i=0;$i<10;$i++) {
 
-    $a = new \Itb\Account();
+    $a = new \Itb\Visitor();
 
     $a->setFirstName($faker->firstName);
     $a->setSecondName($faker->lastName);
     $a->setCountry($faker->country);
-    $a->setPassword(password_hash($faker->password(6),PASSWORD_DEFAULT));
-    $a->setUser($faker->userName);
+    $a->setEmail($faker->email);
 
     $accountsRepository->insertAccount($a);
 }
@@ -57,15 +56,18 @@ $staffRepository->createTableStaff();
 //--------------- Hard Code admin users -----------------------
 
 $staff = new \Itb\Staff();
-$staff->setUserName("jason");
-$staff->setPassword(password_hash("password", PASSWORD_DEFAULT));
+
+$staff->setUserName('staff');
+$staff->setPassword(password_hash('staff', PASSWORD_DEFAULT));
+$staff->setPrivilege(0);
+$staffRepository->insertUser($staff);
+
+$staff->setUserName('admin');
+$staff->setPassword(password_hash('admin', PASSWORD_DEFAULT));
 $staff->setPrivilege(1);
 $staffRepository->insertUser($staff);
 
-$staff->setUserName("matt");
-$staff->setPassword(password_hash("password", PASSWORD_DEFAULT));
-$staff->setPrivilege(1);
-$staffRepository->insertUser($staff);
+
 
 //----------------- Add random users ---------------------------
 

@@ -1,0 +1,88 @@
+{% extends '_template.html.twig' %}
+
+{% block accountsCurrent %}
+    current_page
+{% endblock %}
+
+
+{% block css %}
+    @import "css/visitor.css";
+{% endblock %}
+
+{% block script %}
+    function confirm_click(){
+    return confirm("Are you sure ?");
+    }
+{% endblock %}
+
+
+{% block main %}
+<br>
+    <table>
+        <tr>
+            <th
+    {% if session.privilege == 'Administrator' %}
+        colspan="8"
+        {% else %}
+            colspan="5"
+            {% endif %}
+            >
+            <h1>Visitors</h1>
+            </th>
+        </tr>
+
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Second Name</th>
+            <th>Country</th>
+            <th>Email</th>
+    {% if session.privilege == 'Administrator' %}
+            <th>Edit</th>
+            <th>Delete</th>
+        {% endif %}
+        </tr>
+
+        {% for visitor in visitors %}
+
+            <tr>
+                <td>
+                    {{ visitor.id }}
+                </td>
+
+                <td>
+                   <a href="index.php?action=viewVisitor&id={{ visitor.id }}" id="singleVisitorLink">{{ visitor.firstName }}</a>
+                </td>
+
+                <td>
+                    {{ visitor.secondName }}
+                </td>
+
+                <td>
+                    {{ visitor.country }}
+                </td>
+
+                <td>
+                    {{ visitor.email }}
+                </td>
+
+                {% if session.privilege == 'Administrator' %}
+                <td>
+                    <a href="index.php?action=editVisitor&id={{ visitor.id }}">Edit</a>
+
+                </td>
+                <td>
+                    <a title="Delete User" onClick="return confirm_click();"  href="index.php?action=deleteVisitor&id={{ visitor.id }}">Delete</a>
+                </td>
+                {% endif %}
+            </tr>
+
+
+        {% endfor %}
+
+    </table>
+
+
+
+
+{% endblock %}

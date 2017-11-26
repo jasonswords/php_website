@@ -9,10 +9,9 @@ class SecondaryController
     private $twig;
     private $username;
 
-    public function __construct($twig, $username)
+    public function __construct($twig)
     {
         $this->twig = $twig;
-        $this->username = $username;
     }
 
     public function processLoginAction()
@@ -23,19 +22,28 @@ class SecondaryController
         $staffRepository = new StaffRepository();
         $account = $staffRepository->getOneByUserName($userName);
 
-        if (null == $account) {
+        if (null == $account)
+        {
             header("Location: index.php?action=error");
             exit();
         } else {
-            if(password_verify($password, $account->getPassword())) {
+            if(password_verify($password, $account->getPassword()))
+            {
+                if(1 == $account->getPrivilege()){
+                    $privilege = 'Administrator';
+                }
+                else{
+                    $privilege = 'Standard Account';
+                }
                 $_SESSION['username'] = $userName;
+                $_SESSION['privilege'] = $privilege;
+
                 header("Location: index.php");
                 exit();
             } else {
                 header("Location: index.php?action=error1");
                 exit();
             }
-            // --- based on outcome decide which VIEW to display
         }
     }
 

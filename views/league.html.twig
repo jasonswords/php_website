@@ -23,9 +23,18 @@
     <table>
 
         <tr>
-            <th colspan="7">
+            <th
+    {% if session.privilege == 'Administrator'  %}
+        colspan="7"
+        {% else %}
+            colspan="5"
+            {% endif %}
+            >
                 <h1>League Results</h1>
+
+    {% if session.privilege == 'Administrator'  %}
                 <h2><a href="/index.php?action=addLeagueMember&id={{ league.id }}" id="addLink">Add Another Member</a></h2>
+        {% endif %}
             </th>
 
         </tr>
@@ -35,8 +44,12 @@
             <th>Country</th>
             <th>Drone</th>
             <th>World Ranking</th>
+
+    {% if session.privilege == 'Administrator'  %}
             <th>Edit</th>
             <th>Delete</th>
+        {% endif %}
+
         </tr>
 
         {% for league in leagueMember %}
@@ -54,12 +67,16 @@
                 <td>
                     {{ league.position }}
                 </td>
+
+            {% if session.privilege == 'Administrator' %}
                 <td>
                     <a href="/index.php?action=editLeagueMember&id={{ league.id }}">Edit</a>
                 </td>
                 <td>
                     <a title="Delete User" onClick="return confirm_click();"  href="/index.php?action=deleteLeagueMember&id={{ league.id }}">Delete</a>
                 </td>
+                {% endif %}
+
             </tr>
 
         {% endfor %}

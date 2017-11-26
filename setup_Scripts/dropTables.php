@@ -3,13 +3,13 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Itb\ProductRepository;
-use Itb\AccountRepository;
+use Itb\VisitorRepository;
 
 $productRepository = new ProductRepository();
 $productRepository->dropTableProducts();
 
 
-$accountsRepository = new AccountRepository();
+$accountsRepository = new VisitorRepository();
 $accountsRepository->dropTableAccounts();
 
 $staffRepository = new \Itb\StaffRepository();

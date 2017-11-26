@@ -2,14 +2,13 @@
 
 namespace Itb;
 
-class Account
+class Visitor
 {
 
     private $firstName;
     private $secondName;
     private $country;
-    private $password;
-    private $user;
+    private $email;
 
     /**
      * @return mixed
@@ -27,7 +26,9 @@ class Account
         $this->firstName = $firstName;
     }
 
-
+    /**
+     * @return mixed
+     */
     public function getSecondName()
     {
         return $this->secondName;
@@ -60,33 +61,18 @@ class Account
     /**
      * @return mixed
      */
-    public function getPassword()
+    public function getEmail()
     {
-        return $this->password;
+        return $this->email;
     }
 
     /**
-     * @param mixed $password
+     * @param mixed $email
      */
-    public function setPassword($password)
+    public function setEmail($email)
     {
-        $this->password = $password;
+        $this->email = $email;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * @param mixed $user
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-    }
 
 }

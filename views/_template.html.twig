@@ -34,16 +34,15 @@
 
     <div id="headerRight">
 
-                {% if userName is defined %}
-
-                     You are logged in as: <strong>{{ userName }}</strong>
+        {% if session.username == ('Standard Account' or 'Administrator') %}
+        Welcome: <strong>{{ session.username }}</strong><br>
+            You are: <strong>{{ session.privilege }}</strong><br>
+            <a href="/index.php?action=logOut" id="mainLogin">Log out</a>
 
                     {% else %}
-
                      <a href="/index.php?action=login" id="mainLogin">Login/Register</a>
+                    {% endif %}
 
-        {% endif %}
-        {% block header %}{% endblock %}
 
     </div>
 
@@ -63,14 +62,22 @@
     </ul>
 </nav>
 
+{% if session.privilege == ( 'Standard Account' or 'Administrator')  %}
 <nav>
     <ul>
+
+        {% if session.privilege == 'Administrator' %}
         <li><a href="/index.php?action=setupDatabase" class="{% block setupDatabaseCurrent %}{% endblock%}">Setup Database</a></li>
         <li><a href="/index.php?action=deleteDatabase" >Delete DataBase</a></li>
-        <li><a href="/index.php?action=accounts" class="{% block accountsCurrent %}{% endblock%}">Accounts</a></li>
+        {% endif %}
+
+        <li><a href="/index.php?action=visitor" class="{% block accountsCurrent %}{% endblock%}">Visitors</a></li>
         <li><a href="/index.php?action=staff" class="{% block staffCurrent %}{% endblock%}">Staff</a></li>
     </ul>
 </nav>
+
+
+{% endif %}
 
 <div id="container">
 

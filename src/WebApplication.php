@@ -12,20 +12,11 @@ class WebApplication
 
     public function __construct()
     {
-        $userName = $this->getUserNameFromSession();
         $twig = new \Twig\Environment(new \Twig_Loader_Filesystem(self::PATH_TO_TEMPLATES));
-        $this->mainController = new MainController($twig, $userName);
-        $this->secondaryController = new SecondaryController($twig, $userName);
-        $this->processingController = new processingController($twig, $userName);
-    }
-
-    public function getUserNameFromSession()
-    {
-        if(isset($_SESSION['username'])){
-            return $_SESSION['username'];
-        } else {
-            return null;
-        }
+        $this->mainController = new MainController($twig);
+        $this->secondaryController = new SecondaryController($twig);
+        $this->processingController = new processingController($twig);
+        $twig->addGlobal('session', $_SESSION);
     }
 
     public function run()
@@ -38,6 +29,10 @@ class WebApplication
 
             case 'login':
                 $this->secondaryController->loginAction();
+                break;
+
+            case 'logOut':
+                $this->processingController->deleteSession();
                 break;
 
             case 'processLogin':
@@ -121,38 +116,42 @@ class WebApplication
                 $this->mainController->processProductUpdateAction($id, $name, $price, $image, $description);
                 break;
 
-//              --------------------------  Account  ------------------------------------------------------------------
+//              --------------------------  Visitor  ------------------------------------------------------------------
 
-            case 'processAccountForm':
-                $this->processingController->processAccountFormAction();
+            case 'processVisitorForm':
+                $this->processingController->processVisitorFormAction();
                 break;
 
-            case 'deleteAccount':
+            case 'deleteVisitor':
                 $id = filter_input(INPUT_GET, 'id');
-                $this->mainController->deleteAccountAction($id);
+                $this->mainController->deleteVisitorAction($id);
                 break;
 
-            case 'accounts':
-                $this->mainController->accountsAction();
+            case 'visitor':
+                $this->mainController->visitorAction();
                 break;
 
-            case 'createAccount':
-                $this->mainController->createAccountAction();
-                break;
-
-            case 'editAccount':
+            case 'viewVisitor':
                 $id = filter_input(INPUT_GET, 'id');
-                $this->mainController->editAccountAction($id);
+                $this->mainController->viewVisitorAction($id);
                 break;
 
-            case 'processAccountUpdate':
+            case 'createVisitor':
+                $this->mainController->createVisitorAction();
+                break;
+
+            case 'editVisitor':
+                $id = filter_input(INPUT_GET, 'id');
+                $this->mainController->editVisitorAction($id);
+                break;
+
+            case 'processVisitorUpdate':
                 $id = filter_input(INPUT_POST, 'id');
                 $firstName = filter_input(INPUT_POST, 'firstName');
                 $secondName = filter_input(INPUT_POST, 'secondName');
                 $country = filter_input(INPUT_POST, 'country');
-                $userName = filter_input(INPUT_POST, 'userName');
-                $password = filter_input(INPUT_POST, 'password');
-                $this->mainController->processAccountUpdateAction($id, $firstName, $secondName, $country, $userName, $password);
+                $email = filter_input(INPUT_POST, 'email');
+                $this->mainController->processVisitorUpdateAction($id, $firstName, $secondName, $country, $email);
                 break;
 //                ---------------------------  League Page  ----------------------------------------------------------
 

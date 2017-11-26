@@ -12,12 +12,14 @@
 {% block main %}
 
 <form action= "/index.php?action=processLogin"  method= "post">
+
+    <a href="index.php?action=createVisitor" id="createAccountLink">Create Account</a>
     
 <h2>Account Login</h2>
     
 
     
-    <label>Username:</label><input type="text" required placeholder="User name" name="userName" autofocus id="loginName"><br><br>
+    <label>Username:</label><input type="text" required placeholder="User name" name="userName" autofocus id="userName"><br><br>
     
     <label>Password:</label><input type="password" required  name="password" id="loginPassword"><br>
     

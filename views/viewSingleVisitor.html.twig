@@ -1,0 +1,39 @@
+{% extends '_template.html.twig' %}
+
+{% block accountsCurrent %}
+    current_page
+{% endblock %}
+
+
+{% block css %}
+    @import "css/visitor.css";
+{% endblock %}
+
+
+{% block main %}
+
+    <div id="singleVisitor">
+
+            <div id="firstName">
+                <h2>First Name</h2>
+                <h3>{{ visitor.firstName }}</h3>
+            </div>
+
+            <div id="secondName">
+                <h2>Second Name</h2>
+                <h3>{{ visitor.secondName }}</h3>
+            </div>
+
+            <div id="country">
+                <h2>Country</h2>
+                <h3>{{ visitor.country }}</h3>
+            </div>
+
+            <div id="email">
+                <h2>Email</h2>
+                <h3>{{ visitor.email }}</h3>
+            </div>
+
+    </div>
+
+{% endblock %}
