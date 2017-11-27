@@ -1,0 +1,30 @@
+#mainContainer{
+    display:flex;
+    margin:auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width:90%;
+    flex-wrap:wrap;
+}
+
+#admin, #staff, #generalLinks{
+    flex:1 0 30%;
+    width:25%;
+    margin:auto;
+    text-align: center;
+
+}
+.spacing{
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.spacing:hover{
+    font-size: 2rem;
+
+}
+
+h2{
+    text-decoration: underline;
+    color:#550a87;
+}

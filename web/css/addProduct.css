@@ -17,7 +17,7 @@ footer{
 }
 
 input:focus{
-    background-color:lightgrey;
+    background-color:lavender;
 }
 
 
@@ -33,6 +33,7 @@ label{
     display:block;
     float:left;
     width:10rem;
+    color: #550a87;
 }
 
 br{
@@ -43,7 +44,7 @@ br{
     text-align:center;
 }
 #submit, #reset{
-    color:#550a87;
+    color:green;
 }
 #submit{
     margin-right:2rem;

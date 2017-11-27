@@ -1,7 +1,7 @@
 form{
     margin:auto;
     width:30%;
-    border: .1rem solid black;
+    border: .1rem solid #550a87;
     padding:1rem;
     margin-top:2rem;
     margin-bottom:2rem;
@@ -12,13 +12,6 @@ input:focus{
 }
 
 
-legend{
-    color:red;
-    border:.1rem solid blue;
-    background-color:white;
-
-}
-
 label{
     margin-bottom:1rem;
     margin-left:5rem;
@@ -26,8 +19,12 @@ label{
     display:block;
     float:left;
     width:10rem;
+    color: #550a87;
 }
 
+fieldset{
+    border: .2rem solid green;
+}
 
 
 br{
@@ -37,13 +34,16 @@ clear:both;
 #button{
 text-align:center;
 }
+
 #submit, #reset{
-color:blue;
+color:green;
 }
+
 #submit{
 margin-right:2rem;
 }
 
 h1{
 text-align:center;
+    color: #550a87;
 }

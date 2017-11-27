@@ -27,9 +27,13 @@ class MainController
     }
 
     public function galleryAction(){
+        $dirName = 'images/';
+        $images = glob($dirName."*.*");
+
         $template = 'gallery.html.twig';
         $argsArray = [
-            'pageTitle' => 'Gallery'
+            'pageTitle' => 'Gallery',
+            'images'  => $images
         ];
         $html = $this->twig->render($template, $argsArray);
         print $html;
@@ -178,6 +182,15 @@ class MainController
         $template = 'about.html.twig';
         $argsArray = [
             'pageTitle' => 'About'
+        ];
+        $html = $this->twig->render($template, $argsArray);
+        print $html;
+    }
+
+    public function siteMapAction(){
+        $template = 'siteMap.html.twig';
+        $argsArray = [
+            'pageTitle' => 'Site Map'
         ];
         $html = $this->twig->render($template, $argsArray);
         print $html;

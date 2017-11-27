@@ -5,6 +5,7 @@
 
 h1{
     text-align: center;
+    color: #550a87;
 }
 
 #text{
@@ -27,6 +28,14 @@ h1{
     width:100%;
 }
 
+img{
+    border:.2rem solid #550a87;
+}
+
+.link:hover{
+    font-size: 1.5rem;
+}
+
 
 form{
     margin:auto;
@@ -35,6 +44,7 @@ form{
     padding:1rem;
     margin-top:2rem;
     margin-bottom:2rem;
+    color:#550a87;
 }
 
 input:focus{
@@ -55,7 +65,12 @@ label{
     text-align:center;
 }
 #submit, #reset{
-    color:blue;
+    color:green;
+}
+
+#submit:hover, #reset:hover{
+    color:green;
+    font-size: 2rem;
 }
 #submit{
     margin-right:2rem;

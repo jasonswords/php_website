@@ -29,7 +29,8 @@ table{
 
 
 table th{
-    border-bottom:.2rem solid black;
+    color: #550a87;
+    border-bottom:.2rem solid #550a87;
     text-align:center;
     padding:.5rem;
 }
@@ -40,7 +41,8 @@ table tr{
 }
 
 td{
+    color: #550a87;
     text-align:center;
     padding:.5rem;
-    border-bottom:.1rem solid black;
+    border-bottom:.1rem solid #550a87;
 }

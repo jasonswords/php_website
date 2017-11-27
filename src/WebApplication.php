@@ -218,6 +218,10 @@ class WebApplication
                 $this->mainController->aboutAction();
                 break;
 
+            case 'siteMap':
+                $this->mainController->siteMapAction();
+                break;
+
             case 'index':
             default:
                 $this->mainController->indexAction();

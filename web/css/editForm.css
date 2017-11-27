@@ -1,7 +1,9 @@
 form{
     margin:auto;
+    margin-top:3rem;
+    margin-bottom: 2rem;
     width:30rem;
-    border: .2rem solid black;
+    border: .2rem solid #550a87;
     padding:1rem;
 }
 
@@ -11,23 +13,23 @@ input:focus{
 
 label{
     margin-bottom:1rem;
+    margin-left: 7rem;
     text-align:left;
     display:block;
     float:left;
-    width:10rem;
+    width:7rem;
+    color: #550a87;
 }
 
 
 #submitButton{
-    margin-left:4rem;
-    color:blue;
-}
-#submit{
-    margin-right:2rem;
+    margin-left:2rem;
+    color:green;
 }
 
 h1{
     text-align:center;
+    color: #550a87;
 }
 
 br{

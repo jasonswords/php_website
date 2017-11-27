@@ -39,3 +39,9 @@ br
 #loginPassword, #userName{
     margin-right:7rem;
 }
+
+#loginSubmit{
+    color: green;
+    font-size: 1rem;
+}
+

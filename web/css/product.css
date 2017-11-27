@@ -24,12 +24,15 @@ p{
 
 .image{
     height:30%;
+    max-height: 8rem;
+    max-width: 8rem;
 }
 
 
 table th{
+    color: #550a87;
     padding:1rem;
-    border-bottom: .1rem solid black;
+    border-bottom: .1rem solid #550a87;
 }
 
 table tr{
@@ -38,9 +41,10 @@ table tr{
 }
 
 td {
+    color:#550a87;
     padding: 1rem;
     text-align: center;
-    border-bottom: .1rem solid black;
+    border-bottom: .1rem solid #550a87;
 }
 
 #addProductLink, #singleVisitorLink{
