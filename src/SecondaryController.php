@@ -65,9 +65,12 @@ class SecondaryController
                 $s->setPrivilege(0);
             }
             $staff->insertUser($s);
+
+            header("Location: index.php?action=staff");
+            exit();
         }
         else{
-            header("Location: index.php?action=createStaff");
+            header("Location: index.php?action=staffError");
             exit();
         }
     }
@@ -144,6 +147,15 @@ class SecondaryController
         $template = 'login.html.twig';
         $argsArray = [
             'pageTitle' => 'Login'
+        ];
+        $html = $this->twig->render($template, $argsArray);
+        print $html;
+    }
+
+    public function staffErrorAction(){
+        $template = 'staffError.html.twig';
+        $argsArray = [
+            'pageTitle' => 'Staff Error'
         ];
         $html = $this->twig->render($template, $argsArray);
         print $html;

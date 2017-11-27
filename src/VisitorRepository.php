@@ -19,10 +19,10 @@ class VisitorRepository
         $sql = "CREATE TABLE visitors 
                     (
                     id INT AUTO_INCREMENT PRIMARY KEY, 
-                    firstName VARCHAR(20) NOT NULL,
-                    secondName VARCHAR (20) NOT NULL,
-                    country VARCHAR(20) NOT NULL,
-                    email VARCHAR(20) NOT NULL,
+                    firstName VARCHAR(50) NOT NULL,
+                    secondName VARCHAR (50) NOT NULL,
+                    country VARCHAR(50) NOT NULL,
+                    email VARCHAR(255) NOT NULL,
                     date TIMESTAMP
                     ); ";
 
@@ -58,7 +58,7 @@ class VisitorRepository
     }
 
 
-    public function getAllAccounts()
+    public function getAllVisitors()
     {
         $sql = 'SELECT * FROM visitors';
 
@@ -86,7 +86,7 @@ class VisitorRepository
         }
     }
 
-    public function deleteOneAccount($id){
+    public function deleteOneVisitor($id){
 
         $sql = 'DELETE FROM visitors WHERE id = :id';
 

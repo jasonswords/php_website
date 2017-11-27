@@ -5,7 +5,7 @@ body
 }
 
 #container{
-
+    border-top: .1rem solid #550a87;
     display:flex;
     flex-wrap:wrap;
 }
@@ -33,7 +33,6 @@ video{
     text-align:center;
     padding:1rem;
     margin-right: 0.2rem;
-    background-color: #FDFEFE;
 }
 
 #section2{
@@ -41,7 +40,6 @@ video{
     text-align:center;
     padding:1rem;
     margin-right: 0.2rem;
-    background-color: #FDFEFE;
 }
 
 .text{
@@ -54,7 +52,6 @@ video{
     flex:1 0 30%;
     text-align:center;
     padding:1rem;
-    background-color: #FDFEFE;
 }
 
 h2

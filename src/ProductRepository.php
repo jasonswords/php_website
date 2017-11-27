@@ -19,10 +19,10 @@ class ProductRepository
         $sql = "CREATE TABLE products 
                     (
                     id INT AUTO_INCREMENT PRIMARY KEY, 
-                    name VARCHAR(20) NOT NULL,
+                    name VARCHAR(100) NOT NULL,
+                    description VARCHAR(255),
+                    image VARCHAR(255) NOT NULL,
                     price FLOAT  NOT NULL,
-                    image VARCHAR(50) NOT NULL,
-                    description VARCHAR(150),
                     date TIMESTAMP
                     ); ";
 
@@ -39,20 +39,16 @@ class ProductRepository
         $description = $p->getDescription();
 
 
-        $sql = 'INSERT INTO products (name, price, image, description)
-			VALUES (:name, :price, :image, :description)';
+        $sql = 'INSERT INTO products (name, description, image, price)
+			VALUES (:name, :description, :image, :price)';
         $stmt = $this->connection->prepare($sql);
 
-        // Bind parameters to statement variables
         $stmt->bindParam(':name', $name );
         $stmt->bindParam(':price', $price);
         $stmt->bindParam(':image', $image);
         $stmt->bindParam(':description', $description);
 
-        // Execute statement
         $stmt->execute();
-
-        //print "<h2> added to table successfully</h2>";
     }
 
     public function dropTableProducts()
@@ -87,13 +83,30 @@ class ProductRepository
         } else {
             return null;
         }
-
-        return $product;
     }
 
-    public function updateProductTable($id, $name, $price, $image, $description){
+    public function getOneByName($name){
+        $sql = 'SELECT * FROM products WHERE name = :name';
 
-        $sql = 'UPDATE products SET name = :name, price = :price, image = :image, description = :description WHERE id = :id';
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam('name', $name);
+        $stmt->execute();
+
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, 'ITB\\Product');
+
+        if($product = $stmt->fetch()){
+            return $product->getId();
+        }
+        else{
+            return null;
+        }
+
+
+}
+
+    public function updateProductTable($id, $name, $description, $image, $price){
+
+        $sql = 'UPDATE products SET name = :name, description = :description, image = :image, price = :price  WHERE id = :id';
 
         $stmt = $this->connection->prepare($sql);
 

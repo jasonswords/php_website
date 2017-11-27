@@ -29,7 +29,7 @@ class ProcessingController
             $visitorRepository->createTableAccounts();
             $visitorRepository->insertAccount($v);
 
-        header("Location: index.php?action=error1");
+        header("Location: index.php?action=about");
         exit();
     }
 
@@ -45,7 +45,21 @@ class ProcessingController
         $p->setDescription($description);
         $productRepository = new ProductRepository();
         $productRepository->createTableProducts();
+
         $productRepository->insertProduct($p);
+
+        $id = $productRepository->getOneByName($name);
+
+        if($id == null){
+            header("Location: index.php?action=productError");
+            exit();
+        }
+        else{
+            header("Location: index.php?action=displaySingleProduct&id=<? $id >");
+            exit();
+        }
+
+
     }
 
     public function displayStaffAction(){

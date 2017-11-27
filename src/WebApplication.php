@@ -45,6 +45,10 @@ class WebApplication
                 $this->secondaryController->processStaffAction();
                 break;
 
+            case 'staffError':
+                $this->secondaryController->staffErrorAction();
+                break;
+
             case 'createStaff':
                 $this->processingController->createStaffAction();
                 break;
@@ -88,6 +92,10 @@ class WebApplication
                 $this->mainController->addProductAction();
                 break;
 
+            case 'productError':
+                $this->mainController->productErrorAction();
+                break;
+
             case 'editProduct':
                 $id = filter_input(INPUT_GET, 'id');
                 $this->mainController->editProductAction($id);
@@ -110,10 +118,11 @@ class WebApplication
             case 'processProductUpdate':
                 $id = filter_input(INPUT_POST, 'id');
                 $name = filter_input(INPUT_POST, 'name');
-                $price = filter_input(INPUT_POST, 'price');
                 $description = filter_input(INPUT_POST, 'description');
                 $image = filter_input(INPUT_POST, 'image');
-                $this->mainController->processProductUpdateAction($id, $name, $price, $image, $description);
+                $price = filter_input(INPUT_POST, 'price');
+
+                $this->mainController->processProductUpdateAction($id, $name, $description, $image, $price);
                 break;
 
 //              --------------------------  Visitor  ------------------------------------------------------------------
@@ -193,11 +202,11 @@ class WebApplication
 
 //                ---------------------------  Database   -------------------------------------------------------------
 
-            case 'setupDatabase':
+            case 'setup':
                 $this->processingController->setupDatabaseAction();
                 break;
 
-            case 'deleteDatabase':
+            case 'delete':
                 $this->processingController->deleteDatabaseAction();
                 break;
 
@@ -205,8 +214,8 @@ class WebApplication
                 $this->mainController->galleryAction();
                 break;
 
-            case 'error':
-                $this->mainController->errorAction();
+            case 'about':
+                $this->mainController->aboutAction();
                 break;
 
             case 'index':

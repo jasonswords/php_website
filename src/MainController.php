@@ -85,7 +85,7 @@ class MainController
 
     public function visitorAction(){
         $visitorRepository = new VisitorRepository();
-        $visitors = $visitorRepository->getAllAccounts();
+        $visitors = $visitorRepository->getAllVisitors();
         $template = 'visitor.html.twig';
         $args = [
             'pageTitle' => 'Visitor Signed Up',
@@ -137,14 +137,14 @@ class MainController
 
     public function deleteVisitorAction($id){
         $visitorRepository = new VisitorRepository();
-        $visitorRepository->deleteOneAccount($id);
+        $visitorRepository->deleteOneVisitor($id);
         header("Location: index.php?action=visitor");
         exit();
     }
 
-    public function processProductUpdateAction($id, $name, $price, $image, $description){
+    public function processProductUpdateAction($id, $name, $description, $image, $price){
         $productRepository = new ProductRepository();
-        $productRepository->updateProductTable($id, $name, $price, $image, $description);
+        $productRepository->updateProductTable($id, $name, $description, $image, $price);
         header("Location: index.php?action=displayProduct");
         exit();
     }
@@ -160,6 +160,24 @@ class MainController
         $template = 'errorPage.html.twig';
         $argsArray = [
             'pageTitle' => 'Error'
+        ];
+        $html = $this->twig->render($template, $argsArray);
+        print $html;
+    }
+
+    public function productErrorAction(){
+        $template = 'productError.html.twig';
+        $argsArray = [
+            'pageTitle' => 'Product Error'
+        ];
+        $html = $this->twig->render($template, $argsArray);
+        print $html;
+    }
+
+    public function aboutAction(){
+        $template = 'about.html.twig';
+        $argsArray = [
+            'pageTitle' => 'About'
         ];
         $html = $this->twig->render($template, $argsArray);
         print $html;

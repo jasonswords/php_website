@@ -27,16 +27,10 @@
     <form action="index.php?action=processStaff" method="post">
     
 	<h1>Add Staff</h1>
-	
-    
-
 
 		<fieldset>
 
-
-            <label for="userName" >First Name:</label><input type="text" name="userName" required size="20" maxlength="20" autofocus
-				placeholder="First Name" id="firstName"><br>
-
+            <label for="userName" >First Name:</label><input type="text" name="userName" required size="20" maxlength="20" autofocus placeholder="First Name" id="firstName"><br>
             <label>Password:</label> <input type="password" name="password1" required><br>
 			<label>Confirm Password:</label> <input type="password" name="password2" required><br>
 			<label>Admin access</label>
@@ -45,13 +39,16 @@
 			<br>
 
 		</fieldset>
+
 		<br>
 
 		<div id="button">
 
 			<input type="submit" value="Send" id="submit">
 			<input type="reset" value="Clear" id="reset"><br>
+
 		</div>
+
 	</form>
 
 {% endblock %}

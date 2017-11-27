@@ -37,7 +37,9 @@
         </tr>
 
         <tr>
+    {% if session.privilege == ( 'Standard' or 'Administrator')  %}
             <th>Id</th>
+        {% endif %}
             <th>Name</th>
             <th>Price</th>
             <th>Image</th>
@@ -53,9 +55,12 @@
         {% for product in products %}
 
             <tr>
+            {% if session.privilege == ( 'Standard' or 'Administrator')  %}
                 <td>
                     {{ product.id }}
                 </td>
+                {% endif %}
+
                 <td>
                     {{ product.Name }}
                 </td>

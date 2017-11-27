@@ -1,0 +1,78 @@
+{% extends '_template.html.twig' %}
+
+{% block aboutCurrent %}
+    current_page
+{% endblock %}
+
+{% block css %}
+    @import "/css/about.css";
+    {% endblock %}
+
+
+{% block main %}
+
+    <div id="box">
+
+
+
+        <div id="text">
+
+            <H1>About me</H1>
+
+        <P id="aboutText">This website is created as part of a php website project for my second year project.
+            I am greatly interested in FPV (First Person View)
+            drone racing and all the technology that is involved.</P>
+
+         <p>  The sport is becoming very popular and its possible to take part at a very reasonable
+        cost, mostly due to the influx of chinese manufacturers driving down cost and increasing competition
+             in the market. Most drone racing is done
+               with small 250 size drones(250mm) which can vary in price.</p>
+
+            <p>  These drones can be purchased from abroad or from the local hobby shops in Ireland.
+        Thes local hobby shop can provide help and advice on where to start and what to start off with.
+              Two shops in Ireland that i use are
+        <a href="https://www.modelheliservices.com/">Model Heli Services</a> and
+              <a href="http://www.radiocontrolledshop.ie/">Radio Controlled shop.ie.</a>
+        Both these shops have many years experience within the hobby and provide useful advice in
+              choosing the best starter model if your starting off
+        or the next in line if you are already racing and just want to upgrade.</P>
+
+            <p><strong>For more information about the hobby and for regular updates, please fill in the form belo
+                    for regular updates and announcement's</strong></p>
+
+        </div>
+
+        <div id="aboutImage">
+            <img src="/images/aboutDrone.jpg" alt="Image of drone" width="500" height="350">
+        </div>
+
+
+    </div>
+
+    <div id="visitor">
+
+            <form action="index.php?action=processVisitorForm" method="post">
+
+                <h1>Sign me up</h1>
+
+                <label>First Name:</label><input type="text" name="firstName" placeholder="First Name" id="firstName">
+                <br>
+                <label>Second Name:</label><input type="text" name="secondName" required placeholder="Second Name" id="secondName">
+                <br>
+                <label>Country</label><input type="text" name="country" required placeholder="Country" id="country">
+                <br>
+                <label>Email</label><input type="email" name="email" required placeholder="Email" id="email">
+                <br>
+                <br>
+
+                <div id="button">
+
+                    <input type="submit" value="Send" id="submit">
+                    <input type="reset" value="Clear" id="reset"><br>
+
+                </div>
+            </form>
+
+    </div>
+
+{% endblock %}
