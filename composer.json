@@ -1,0 +1,13 @@
+{
+  "autoload":{
+    "psr-4":{
+      "Itb\\":"src"
+    }
+  },
+  "scripts":{
+    "run":"php -S localhost:8000 -t ./web"
+  },
+  "require": {
+    "twig/twig": "^2.4"
+  }
+}
