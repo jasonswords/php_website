@@ -18,9 +18,6 @@ class MainController
         $argsArray = [
             'pageTitle' => 'Home'
         ];
-        if(!empty($username)){
-            $argsArray['username'] = $username;
-        }
 
         $html = $this->twig->render($template, $argsArray);
         print $html;
@@ -92,7 +89,7 @@ class MainController
         $visitors = $visitorRepository->getAllVisitors();
         $template = 'visitor.html.twig';
         $args = [
-            'pageTitle' => 'Visitor Signed Up',
+            'pageTitle' => 'Visitor',
             'visitors' => $visitors
         ];
         $html = $this->twig->render($template, $args);
@@ -116,7 +113,7 @@ class MainController
        $product = $productRepository->getOneById($id);
         $template = 'displaySingleProduct.html.twig';
         $args = [
-            'pageTitle' => 'Single Product',
+            'pageTitle' => 'View Product',
             'product' => $product
         ];
         $html = $this->twig->render($template, $args);
@@ -187,10 +184,28 @@ class MainController
         print $html;
     }
 
+    public function aboutConfirmAction(){
+        $template = 'aboutConfirm.html.twig';
+        $argsArray = [
+            'pageTitle' => 'About'
+        ];
+        $html = $this->twig->render($template, $argsArray);
+        print $html;
+    }
+
     public function siteMapAction(){
         $template = 'siteMap.html.twig';
         $argsArray = [
             'pageTitle' => 'Site Map'
+        ];
+        $html = $this->twig->render($template, $argsArray);
+        print $html;
+    }
+
+    public function errorPageAction(){
+        $template = 'errorPage.html.twig';
+        $argsArray = [
+            'pageTitle' => 'Error Page'
         ];
         $html = $this->twig->render($template, $argsArray);
         print $html;

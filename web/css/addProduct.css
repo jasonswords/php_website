@@ -8,10 +8,6 @@ form{
     padding:2rem;
 }
 
-NAV{
-    margin-bottom: 1rem;
-}
-
 footer{
     margin-top: 1rem;
 }
@@ -53,4 +49,8 @@ br{
 h1{
     text-align:center;
     color: #550a87;
+}
+
+h2{
+    color:green;
 }

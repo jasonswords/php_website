@@ -28,7 +28,7 @@ h1{
     width:100%;
 }
 
-img{
+#aboutImage img{
     border:.2rem solid #550a87;
 }
 
@@ -57,6 +57,16 @@ label{
     display:block;
     float:left;
     width:10rem;
+}
+
+#confirm{
+    margin: auto;
+    margin-top:2rem;
+    color:GREEN;
+}
+
+#confirm h2{
+    color:#550a87;
 }
 
 #button{

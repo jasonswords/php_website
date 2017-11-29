@@ -226,6 +226,14 @@ class WebApplication
                 $this->mainController->aboutAction();
                 break;
 
+            case 'aboutConfirm':
+                $this->mainController->aboutConfirmAction();
+                break;
+
+            case 'errorPage':
+                $this->mainController->errorPageAction();
+                break;
+
             case 'siteMap':
                 $this->mainController->siteMapAction();
                 break;

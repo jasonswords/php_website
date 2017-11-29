@@ -1,23 +1,15 @@
 {% extends "_template.html.twig" %}
 
 {% block css %}
-
-   #message{margin:auto;
-    padding-bottom:5rem;
-    padding-top:5rem;
-    color:red;
-    }
+    @import "css/error.css";
     {% endblock %}
 
 
 
 {% block main %}
-    <br>
-    <br>
-    <br>
-    <h1 id="message"> Error..... Something seems to have gone wrong</h1>
-    <br>
-    <br>
-    <br>
+   <div id="errorBlock">
+       <img src="images/icons/errorImage.jpg" alt="Bacground Image" id="errorImage">
+        <div id="message"><strong> Error..... Unfortunately, Something seems to have gone wrong</strong></div>
+   </div>
 
 {% endblock %}

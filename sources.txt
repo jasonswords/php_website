@@ -96,3 +96,6 @@ http://doublegsports.com/wp-content/uploads/2017/01/droneracing.jpg
 
 code to upload image files
 https://www.w3schools.com/php/php_file_upload.asp
+
+errorImage.jpg
+https://www.webpagefx.com/blog/images/assets/images.sixrevisions.com/2010/05/26-13_error_page_chrisjennings.jpg
