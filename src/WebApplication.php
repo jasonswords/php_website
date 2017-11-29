@@ -31,6 +31,10 @@ class WebApplication
                 $this->secondaryController->loginAction();
                 break;
 
+            case 'loginError':
+                $this->secondaryController->loginErrorAction();
+                break;
+
             case 'logOut':
                 $this->processingController->deleteSession();
                 break;
@@ -193,6 +197,10 @@ class WebApplication
                 $drone = filter_input(INPUT_POST, 'drone');
                 $position = filter_input(INPUT_POST, 'position');
                 $this->secondaryController->addLeagueMemberAction( $name, $country, $drone, $position);
+                break;
+
+            case 'addLeagueMemberPage':
+                $this->secondaryController->addLeagueMemberPageAction();
                 break;
 
             case 'displaySingleMember':

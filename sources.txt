@@ -93,3 +93,6 @@ https://static1.squarespace.com/static/56383553e4b041ec7db1ed3e/t/58a799f21b631b
 
 drone11.jpg
 http://doublegsports.com/wp-content/uploads/2017/01/droneracing.jpg
+
+code to upload image files
+https://www.w3schools.com/php/php_file_upload.asp

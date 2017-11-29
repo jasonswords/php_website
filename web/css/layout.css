@@ -1,3 +1,7 @@
+/*
+    Layout
+ */
+
 body
 {
     padding:0;
@@ -17,7 +21,6 @@ body
 video{
     width:100%;
 }
-
 
 #formContainer
 {
@@ -45,7 +48,6 @@ video{
 .text{
     padding:1rem;
 }
-
 
 #section3
 {

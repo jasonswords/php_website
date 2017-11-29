@@ -1,3 +1,7 @@
+/*
+    Site Map
+ */
+
 #mainContainer{
     display:flex;
     margin:auto;
@@ -12,7 +16,6 @@
     width:25%;
     margin:auto;
     text-align: center;
-
 }
 .spacing{
     text-decoration: none;
@@ -21,7 +24,6 @@
 
 .spacing:hover{
     font-size: 2rem;
-
 }
 
 h2{

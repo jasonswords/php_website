@@ -1,10 +1,11 @@
-
+/*
+    Product
+ */
 
 h1, h2{
     text-align:center;
     color:#550a87;
 }
-
 
 form{
     width:100%;
@@ -28,7 +29,6 @@ p{
     max-width: 8rem;
 }
 
-
 table th{
     color: #550a87;
     padding:1rem;
@@ -37,7 +37,6 @@ table th{
 
 table tr{
     text-align:center;
-
 }
 
 td {

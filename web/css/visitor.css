@@ -1,13 +1,15 @@
-
+/*
+    Visitor
+ */
 
 h1, h2{
     text-align:center;
     color:#550a87;
 }
+
 h2{
     text-decoration: underline;
 }
-
 
 form{
     width:100%;
@@ -29,7 +31,6 @@ p{
     height:30%;
 }
 
-
 table th{
     padding:1rem;
     border-bottom: .1rem solid #550a87;
@@ -38,7 +39,6 @@ table th{
 
 table tr{
     text-align:center;
-
 }
 
 td {

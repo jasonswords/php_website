@@ -24,7 +24,7 @@ class SecondaryController
 
         if (null == $account)
         {
-            header("Location: index.php?action=error");
+            header("Location: index.php?action=loginError");
             exit();
         } else {
             if(password_verify($password, $account->getPassword()))
@@ -41,7 +41,7 @@ class SecondaryController
                 header("Location: index.php");
                 exit();
             } else {
-                header("Location: index.php?action=error1");
+                header("Location: index.php?action=loginError");
                 exit();
             }
         }
@@ -99,6 +99,17 @@ class SecondaryController
         print $html;
     }
 
+    public function addLeagueMemberPageAction(){
+
+        $template = 'addLeagueMember.html.twig';
+        $args = [
+            'pageTitle' => 'Edit League',
+        ];
+        $html = $this->twig->render($template, $args);
+        print $html;
+
+    }
+
     public function addLeagueMemberAction($name, $country, $drone, $position){
         $leagueRepository = new LeagueRepository();
         $leagueRepository->createTableLeague();
@@ -108,12 +119,10 @@ class SecondaryController
         $l->setDrone($drone);
         $l->setPosition($position);
         $leagueRepository->insertLeagueMember($l);
-        $template = 'addLeagueMember.html.twig';
-        $args = [
-            'pageTitle' => 'Edit League',
-        ];
-        $html = $this->twig->render($template, $args);
-        print $html;
+
+        header("Location: index.php?action=leaguePage");
+        exit();
+
     }
 
     public function processLeagueUpdateAction($id, $name, $country, $drone, $position){
@@ -149,6 +158,17 @@ class SecondaryController
             'pageTitle' => 'Login'
         ];
         $html = $this->twig->render($template, $argsArray);
+        print $html;
+    }
+
+    public function loginErrorAction(){
+
+        $template = 'loginError.html.twig';
+        $args = [
+          'pageTitle' => 'Login Error'
+        ];
+
+        $html = $this->twig->render($template, $args);
         print $html;
     }
 
