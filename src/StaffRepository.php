@@ -4,7 +4,6 @@ namespace Itb;
 
 class StaffRepository
 {
-
     private $connection;
 
     public function __construct()
@@ -15,18 +14,15 @@ class StaffRepository
 
     public function createTableStaff()
     {
-
-        $sql = "CREATE TABLE staff 
+        $sql = 'CREATE TABLE staff 
                     (
                     id INT AUTO_INCREMENT PRIMARY KEY, 
                     userName VARCHAR(50) NOT NULL,
                     password VARCHAR (255) NOT NULL,
                     privilege  INT,
                     date TIMESTAMP
-                    ); ";
-
+                    ); ';
         $this->connection->exec($sql);
-
     }
 
     public function insertUser(Staff $u)
@@ -40,19 +36,15 @@ class StaffRepository
 
         $stmt = $this->connection->prepare($sql);
 
-        // Bind parameters to statement variables
         $stmt->bindParam(':userName', $userName);
         $stmt->bindParam(':password', $password);
         $stmt->bindParam(':privilege', $privilege);
 
-        // Execute statement
         $stmt->execute();
-
     }
 
     public function dropTableStaff()
     {
-        // Drop table messages from file db
         $this->connection->exec('DROP TABLE staff');
     }
 
@@ -84,20 +76,19 @@ class StaffRepository
         } else {
             return null;
         }
-
-        return $staff;
     }
 
     public function updateStaffTable($id, $userName, $password, $privilege){
 
-        $sql = 'UPDATE staff SET userName = :userName, password = :password, privilege = :privileges WHERE id = :id';
+
+        $sql = 'UPDATE staff SET userName = :userName, password = :password, privilege = :privilege WHERE id = :id';
 
         $stmt = $this->connection->prepare($sql);
 
         $stmt->bindParam(':id', $id);
         $stmt->bindParam(':userName', $userName);
         $stmt->bindParam(':password', $password);
-        $stmt->bindParam(':privileges', $privileges);
+        $stmt->bindParam(':privilege', $privilege);
 
         $stmt->execute();
     }
@@ -117,8 +108,6 @@ class StaffRepository
         } else {
             return null;
         }
-
-        return $staff;
     }
 
     public function deleteOneUser($id){
@@ -131,5 +120,4 @@ class StaffRepository
 
         $stmt->execute();
     }
-
 }

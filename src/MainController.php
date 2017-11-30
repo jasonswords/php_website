@@ -11,7 +11,6 @@ class MainController
         $this->twig = $twig;
     }
 
-
     public function indexAction(){
 
         $template = 'home.html.twig';
@@ -35,7 +34,6 @@ class MainController
         $html = $this->twig->render($template, $argsArray);
         print $html;
     }
-
 
     public function addProductAction(){
         $template = 'addProduct.html.twig';
@@ -210,8 +208,4 @@ class MainController
         $html = $this->twig->render($template, $argsArray);
         print $html;
     }
-
-
-
-
 }

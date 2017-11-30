@@ -26,6 +26,10 @@ fieldset{
     border: .2rem solid green;
 }
 
+#message{
+    color: red;
+}
+
 
 br{
 clear:both;

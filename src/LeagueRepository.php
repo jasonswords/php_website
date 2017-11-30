@@ -11,7 +11,6 @@ namespace Itb;
 
 class LeagueRepository
 {
-
     private $connection;
 
     public function __construct()
@@ -22,8 +21,7 @@ class LeagueRepository
 
     public function createTableLeague()
     {
-
-        $sql = "CREATE TABLE league 
+        $sql = 'CREATE TABLE league 
                     (
                     id INT AUTO_INCREMENT PRIMARY KEY, 
                     name VARCHAR(20) NOT NULL,
@@ -31,10 +29,9 @@ class LeagueRepository
                     drone VARCHAR(20) NOT NULL,
                     position int NOT NULL,
                     date TIMESTAMP
-                    ); ";
+                    ); ';
 
         $this->connection->exec($sql);
-
     }
 
     public function insertLeagueMember(League $l)
@@ -48,15 +45,12 @@ class LeagueRepository
 			VALUES (:name, :country, :drone, :position)';
         $stmt = $this->connection->prepare($sql);
 
-        // Bind parameters to statement variables
         $stmt->bindParam('name', $name );
         $stmt->bindParam(':country', $country);
         $stmt->bindParam(':drone', $drone);
         $stmt->bindParam(':position', $position);
 
-        // Execute statement
         $stmt->execute();
-
     }
 
     public function dropTableLeague()
@@ -91,8 +85,6 @@ class LeagueRepository
         } else {
             return null;
         }
-
-        return $leagueMember;
     }
 
     public function getOneByName($name){
@@ -110,8 +102,6 @@ class LeagueRepository
         } else {
             return null;
         }
-
-        return $leagueMember;
     }
 
     public function deleteOneLeagueMember($id){
@@ -138,8 +128,5 @@ class LeagueRepository
         $stmt->bindParam(':position', $position);
 
         $stmt->execute();
-
-
     }
-
 }

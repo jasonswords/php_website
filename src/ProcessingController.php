@@ -33,10 +33,6 @@ class ProcessingController
         exit();
     }
 
-
-
-
-
     public function processProductAction(){
 
         $target_dir = "images/";
@@ -139,13 +135,24 @@ class ProcessingController
         exit();
     }
 
-    public function processStaffUpdateAction($id, $userName, $password, $privilege){
-        $staffRepository = new StaffRepository();
-        $staffRepository->createTableStaff();
-        $staffRepository->updateStaffTable($id, $userName, $password, $privilege);
+    public function processStaffUpdateAction(){
+        $id = filter_input(INPUT_POST, 'id');
+        $userName = filter_input(INPUT_POST, 'userName');
+        $password = filter_input(INPUT_POST, 'password1');
+        $hash = password_hash(filter_input(INPUT_POST, 'password2'), PASSWORD_DEFAULT);
+        $privilege = filter_input(INPUT_POST, 'radioButton');
 
-        header("Location: index.php?action=staff");
-        exit();
+        if(password_verify($password, $hash)){
+            $staffRepository = new StaffRepository();
+            $staffRepository->updateStaffTable($id, $userName, $password, $privilege);
+            header("Location: index.php?action=staff");
+            exit();
+        }
+        else{
+            header("Location: index.php?action=staffError&id=$id");
+            exit();
+        }
+
     }
 
     public function deleteSession(){
@@ -176,5 +183,4 @@ class ProcessingController
     public function deleteDatabaseAction(){
             include_once __DIR__ . '/../setup_Scripts/dropTables.php';
     }
-
 }

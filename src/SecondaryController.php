@@ -58,12 +58,7 @@ class SecondaryController
             $s = new Staff();
             $s->setUserName($userName);
             $s->setPassword($hashedPassword);
-            if($privilege == 1){
-                $s->setPrivilege(1);
-            }
-            else{
-                $s->setPrivilege(0);
-            }
+            $s->setPrivilege($privilege);
             $staff->insertUser($s);
 
             header("Location: index.php?action=staff");
@@ -172,10 +167,14 @@ class SecondaryController
         print $html;
     }
 
-    public function staffErrorAction(){
-        $template = 'staffError.html.twig';
+    public function staffErrorAction($id){
+        $staffRepository = new StaffRepository();
+        $staff = $staffRepository->getOneById($id);
+
+        $template = 'editStaffError.html.twig';
         $argsArray = [
-            'pageTitle' => 'Staff Error'
+            'pageTitle' => 'Edit Staff',
+            'staff' => $staff
         ];
         $html = $this->twig->render($template, $argsArray);
         print $html;

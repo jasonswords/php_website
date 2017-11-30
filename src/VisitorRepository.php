@@ -16,7 +16,7 @@ class VisitorRepository
     public function createTableAccounts()
     {
 
-        $sql = "CREATE TABLE visitors 
+        $sql = 'CREATE TABLE visitors 
                     (
                     id INT AUTO_INCREMENT PRIMARY KEY, 
                     firstName VARCHAR(50) NOT NULL,
@@ -24,10 +24,9 @@ class VisitorRepository
                     country VARCHAR(50) NOT NULL,
                     email VARCHAR(255) NOT NULL,
                     date TIMESTAMP
-                    ); ";
+                    ); ';
 
         $this->connection->exec($sql);
-
     }
 
     public function insertAccount(Visitor $v)
@@ -41,13 +40,11 @@ class VisitorRepository
 			VALUES (:firstName, :secondName, :country, :email)';
         $stmt = $this->connection->prepare($sql);
 
-        // Bind parameters to statement variables
         $stmt->bindParam(':firstName', $firstName );
         $stmt->bindParam(':secondName', $secondName);
         $stmt->bindParam(':country', $country);
         $stmt->bindParam(':email', $email);
 
-        // Execute statement
         $stmt->execute();
 
     }
@@ -111,5 +108,4 @@ class VisitorRepository
 
         $stmt->execute();
     }
-
 }

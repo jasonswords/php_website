@@ -8,6 +8,7 @@
     "run":"php -S localhost:8000 -t ./web"
   },
   "require": {
-    "twig/twig": "^2.4"
+    "twig/twig": "^2.4",
+    "monolog/monolog": "^1.23"
   }
 }

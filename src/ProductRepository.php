@@ -4,7 +4,6 @@ namespace Itb;
 
 class ProductRepository
 {
-
     private $connection;
 
     public function __construct()
@@ -16,7 +15,7 @@ class ProductRepository
     public function createTableProducts()
     {
 
-        $sql = "CREATE TABLE products 
+        $sql = 'CREATE TABLE products 
                     (
                     id INT AUTO_INCREMENT PRIMARY KEY, 
                     name VARCHAR(100) NOT NULL,
@@ -24,20 +23,17 @@ class ProductRepository
                     image VARCHAR(255) NOT NULL,
                     price FLOAT  NOT NULL,
                     date TIMESTAMP
-                    ); ";
+                    ); ';
 
         $this->connection->exec($sql);
-
     }
 
     public function insertProduct(Product $p)
     {
-
         $name = $p->getName();
         $price = $p->getPrice();
         $image = $p->getImage();
         $description = $p->getDescription();
-
 
         $sql = 'INSERT INTO products (name, description, image, price)
 			VALUES (:name, :description, :image, :price)';
@@ -56,7 +52,6 @@ class ProductRepository
         // Drop table messages from file db
         $this->connection->exec('DROP TABLE products');
     }
-
 
     public function getAllProducts()
     {

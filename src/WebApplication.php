@@ -50,7 +50,8 @@ class WebApplication
                 break;
 
             case 'staffError':
-                $this->secondaryController->staffErrorAction();
+                $id = filter_input(INPUT_GET, 'id');
+                $this->secondaryController->staffErrorAction($id);
                 break;
 
             case 'createStaff':
@@ -72,18 +73,7 @@ class WebApplication
                 break;
 
             case 'processStaffUpdate':
-                $id = filter_input(INPUT_POST, 'id');
-                $userName = filter_input(INPUT_POST, 'userName');
-                $password = filter_input(INPUT_POST, 'password1');
-                $hash = password_hash(filter_input(INPUT_POST, 'password2'), PASSWORD_DEFAULT);
-                $privilege = filter_input(INPUT_POST, 'privilege');
-                    if(password_verify($password, $hash)){
-                        $this->processingController->processStaffUpdateAction($id, $userName, $hash, $privilege);
-                    }
-                    else{
-                        header("Location: index.php?action=error1");
-                        exit();
-                    }
+                $this->processingController->processStaffUpdateAction();
                 break;
 
 //                ---------------------  Product   --------------------------------------------------------------------
