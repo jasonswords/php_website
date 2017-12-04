@@ -36,40 +36,37 @@ class ProductController{
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
             && $imageFileType != "gif" ) {
             $uploadOk = 0;
+            print 'wrong file extension';
+            die();
         }
         if ($uploadOk == 0) {
             header("Location: index.php?action=errorPage");
             exit();
         } else {
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+
+                $name = filter_input(INPUT_POST, 'name');
+                $price = filter_input(INPUT_POST, 'price');
+                $description = filter_input(INPUT_POST, 'description');
+                $p = new Product();
+                $p->setName($name);
+                $p->setPrice($price);
+                $p->setImage($imageName);
+                $p->setDescription($description);
+                $productRepository = new ProductRepository();
+                $productRepository->createTableProducts();
+                $productRepository->insertProduct($p);
+
+                $id = $productRepository->getOneByName($name);
+
+                header("Location: index.php?action=displaySingleProduct&id=<? $id >");
+                exit();
+
             } else {
-                header("Location: index.php?action=errorPage");
+
+                header("Location: index.php?action=productError");
                 exit();
             }
-        }
-        $name = filter_input(INPUT_POST, 'name');
-        $price = filter_input(INPUT_POST, 'price');
-        $description = filter_input(INPUT_POST, 'description');
-        $p = new Product();
-        $p->setName($name);
-        $p->setPrice($price);
-        $p->setImage($imageName);
-        $p->setDescription($description);
-        $productRepository = new ProductRepository();
-        $productRepository->createTableProducts();
-
-        $productRepository->insertProduct($p);
-
-        $id = $productRepository->getOneByName($name);
-
-        if($id == null){
-            header("Location: index.php?action=productError");
-            exit();
-        }
-        else{
-            header("Location: index.php?action=displaySingleProduct&id=<? $id >");
-            exit();
         }
     }
 
@@ -86,7 +83,7 @@ class ProductController{
 
         $products = new ProductRepository();
         $p = $products->getAllProducts();
-        $template = 'products.php.twig';
+        $template = 'products.html.twig';
         $argsArray = [
             'pageTitle' => 'Products',
             'products'  => $p

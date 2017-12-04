@@ -104,6 +104,23 @@ class LeagueRepository
         }
     }
 
+    public function getIdByName($name){
+
+        $sql = 'SELECT * FROM league WHERE name = :name';
+
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(':name', $name);
+        $stmt->execute();
+
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, 'Itb\\League');
+
+        if ($leagueMember = $stmt->fetch()) {
+            return $leagueMember->getId();
+        } else {
+            return null;
+        }
+    }
+
     public function deleteOneLeagueMember($id){
 
         $sql = 'DELETE FROM league WHERE id = :id';

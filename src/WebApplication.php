@@ -214,11 +214,7 @@ class WebApplication
             case 'processLeagueUpdate':
                 if (isset($_SESSION['privilege']) && $_SESSION['privilege'] == 'Administrator') {
                 $id = filter_input(INPUT_POST, 'id');
-                $name = filter_input(INPUT_POST, 'name');
-                $country = filter_input(INPUT_POST, 'country');
-                $drone = filter_input(INPUT_POST, 'drone');
-                $position = filter_input(INPUT_POST, 'position');
-                $this->leagueController->processLeagueUpdateAction($id, $name, $country, $drone, $position);
+                $this->leagueController->processLeagueUpdateAction();
                 }else{$this->mainController->indexAction();}
                 break;
 
