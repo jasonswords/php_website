@@ -54,19 +54,34 @@
 
         {% for league in leagueMember %}
 
+
+
+
             <tr>
-                <td>
-                    {{ league.name }}
-                </td>
-                <td>
-                    {{ league.country }}
-                </td>
-                <td>
-                    <a href="index.php?action=displaySingleMember&id={{ league.id }}" ><img src="/images/{{ league.drone }}" class="image" ></a>
-                </td>
-                <td>
-                    {{ league.position }}
-                </td>
+                <a href="index.php?action=displaySingleMember&id={{ league.id }}" >
+
+                    <td>
+                        <a href="index.php?action=displaySingleMember&id={{ league.id }}" >
+                            {{ league.name }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="index.php?action=displaySingleMember&id={{ league.id }}" >
+                            {{ league.country }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="index.php?action=displaySingleMember&id={{ league.id }}" >
+                            <img src="/images/{{ league.drone }}" class="image" alt="{{ league.drone }}">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="index.php?action=displaySingleMember&id={{ league.id }}" >
+                            {{ league.position }}
+                        </a>
+                    </td>
+
+                </a>
 
             {% if session.privilege == 'Administrator' %}
                 <td>
@@ -77,7 +92,11 @@
                 </td>
                 {% endif %}
 
+
             </tr>
+
+
+
 
         {% endfor %}
 

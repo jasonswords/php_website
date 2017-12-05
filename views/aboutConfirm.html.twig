@@ -12,9 +12,17 @@
 {% block main %}
 
     <div id="confirm">
-        <h2>Confirmation</h2>
-        <p>Thank you for signing up, we will email you with regular updates
-            and news relating to new products as they come into stock</p>
+        <h1>Thank You</h1>
+        <p> Thank you <strong>{{ visitor.firstName }} {{ visitor.secondName }}</strong> for signing up</p>
+        <br>
+        <h2>First Name</h2>
+        <p>{{ visitor.firstName }}</p>
+        <h2>Second Name</h2>
+        <p>{{ visitor.secondName }}</p>
+        <h2>Country</h2>
+        <p>{{ visitor.country }}</p>
+        <h2>Email</h2>
+        <p>{{ visitor.email }}</p>
     </div>
 
     <div id="box">

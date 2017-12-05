@@ -25,9 +25,9 @@ class LeagueRepository
                     (
                     id INT AUTO_INCREMENT PRIMARY KEY, 
                     name VARCHAR(20) NOT NULL,
-                    country VARCHAR (20) NOT NULL,
-                    drone VARCHAR(20) NOT NULL,
-                    position int NOT NULL,
+                    country VARCHAR (20),
+                    drone VARCHAR(20),
+                    position int,
                     date TIMESTAMP
                     ); ';
 
@@ -99,6 +99,23 @@ class LeagueRepository
 
         if ($leagueMember = $stmt->fetch()) {
             return $leagueMember;
+        } else {
+            return null;
+        }
+    }
+
+    public function getImageById($id){
+
+        $sql = 'SELECT * FROM league WHERE id = :id';
+
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, 'Itb\\League');
+
+        if ($leagueMember = $stmt->fetch()) {
+            return $leagueMember->getDrone();
         } else {
             return null;
         }

@@ -59,13 +59,11 @@
         <li><a href="/index.php?action=displayProduct" class="{% block displayProductCurrent %}{% endblock%}">Products</a></li>
         <li><a href="/index.php?action=gallery" class="{% block galleryCurrent %}{% endblock%}">Gallery</a></li>
         <li><a href="/index.php?action=about" class="{% block aboutCurrent %}{% endblock%}">About</a></li>
-        <li><a href="/index.php?action=siteMap" class="{% block siteMapCurrent %}{% endblock%}">Site Map</a></li>
-
-
     </ul>
 </nav>
 
 {% if session.privilege == ( 'Standard Account' or 'Administrator')  %}
+
 <nav>
     <ul>
 

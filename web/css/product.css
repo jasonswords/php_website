@@ -46,6 +46,10 @@ td {
     border-bottom: .1rem solid #550a87;
 }
 
+a{
+    text-decoration: none;
+}
+
 #addProductLink, #singleVisitorLink{
     text-align: right;
     text-decoration: none;

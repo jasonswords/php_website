@@ -62,7 +62,7 @@ class StafController
 
         if(password_verify($password, $hash)){
             $staffRepository = new StaffRepository();
-            $staffRepository->updateStaffTable($id, $userName, $password, $privilege);
+            $staffRepository->updateStaffTable($id, $userName, $hash, $privilege);
             header("Location: index.php?action=staff");
             exit();
         }

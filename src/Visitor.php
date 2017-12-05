@@ -4,11 +4,29 @@ namespace Itb;
 
 class Visitor
 {
-
+    private $id;
     private $firstName;
     private $secondName;
     private $country;
     private $email;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+
 
     /**
      * @return mixed

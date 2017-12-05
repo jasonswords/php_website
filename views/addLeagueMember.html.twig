@@ -28,13 +28,13 @@
 
         <h1>Add League Member</h1>
 
-        <label>Name:</label><input type="text" name="name" required>
+        <label>Name:</label><input type="text" name="name" required autofocus>
         <br>
-        <label>Country:</label><input type="text" name="country" required>
+        <label>Country:</label><input type="text" name="country">
         <br>
-        <label>Drone Image</label> <input type="file" name="fileToUpload" id="fileToUpload"><br>
+        <label>Drone Image</label> <input type="file" name="upload" id="fileToUpload"><br>
         <br>
-        <label>Position:</label><input type="text" name="position" required>
+        <label>Position:</label><input type="number" min="0" name="position" required>
         <br>
 
         <label> </label><input type="submit" value="Submit" id="submitButton">

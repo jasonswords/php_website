@@ -43,7 +43,7 @@ for($i=0;$i<10;$i++) {
     $a->setCountry($faker->country);
     $a->setEmail($faker->email);
 
-    $accountsRepository->insertAccount($a);
+    $accountsRepository->insertVisitor($a);
 }
 
 

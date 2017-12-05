@@ -10,7 +10,7 @@ $productRepository->dropTableProducts();
 
 
 $accountsRepository = new VisitorRepository();
-$accountsRepository->dropTableAccounts();
+$accountsRepository->dropTableVisitorss();
 
 $staffRepository = new \Itb\StaffRepository();
 $staffRepository->dropTableStaff();

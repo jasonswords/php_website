@@ -57,21 +57,31 @@
             <tr>
             {% if session.privilege == ( 'Standard' or 'Administrator')  %}
                 <td>
+                    <a href="index.php?action=displaySingleProduct&id={{ product.id }}">
                     {{ product.id }}
+                    </a>
                 </td>
                 {% endif %}
 
                 <td>
+                    <a href="index.php?action=displaySingleProduct&id={{ product.id }}">
                     {{ product.Name }}
+                    </a>
                 </td>
                 <td>
-                    {{ product.Price }}
+                    <a href="index.php?action=displaySingleProduct&id={{ product.id }}">
+                    &euro; {{ product.Price }}
+                    </a>
                 </td>
                 <td>
-                    <a href="index.php?action=displaySingleProduct&id={{ product.id }}"><img src="images/{{ product.Image}}" class="image" > </a>
+                    <a href="index.php?action=displaySingleProduct&id={{ product.id }}">
+                        <img src="images/{{ product.Image}}" alt="{{ product.image }}" class="image" >
+                    </a>
                 </td>
                 <td>
+                    <a href="index.php?action=displaySingleProduct&id={{ product.id }}">
                     {{ product.Description}}
+                    </a>
                 </td>
 
             {% if session.privilege == ( 'Standard' or 'Administrator')  %}

@@ -24,7 +24,7 @@ class LoginController
             $account = $staffRepository->getOneByUserName($userName);
 
             if (null == $account) {
-                header("Location: index.php?action=loginError");
+               header("Location: index.php?action=loginError");
                 exit();
             } else {
                 if (password_verify($password, $account->getPassword())) {
@@ -32,13 +32,13 @@ class LoginController
                         $privilege = 'Administrator';
                     } else {
                         $privilege = 'Standard Account';
-                    }
-                    $_SESSION['username'] = $userName;
-                    $_SESSION['privilege'] = $privilege;
+                   }
+                    $_SESSION['username'] = 'Administrator';//$userName;
+                    $_SESSION['privilege'] = 'Administrator';//$privilege;
 
                     header("Location: index.php");
                     exit();
-                } else {
+               } else {
                     header("Location: index.php?action=loginError");
                     exit();
                 }

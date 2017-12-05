@@ -51,19 +51,27 @@
                 </td>
 
                 <td>
-                   <a href="index.php?action=viewVisitor&id={{ visitor.id }}" id="singleVisitorLink">{{ visitor.firstName }}</a>
+                   <a href="index.php?action=viewVisitor&id={{ visitor.id }}" id="singleVisitorLink">
+                       {{ visitor.firstName }}
+                   </a>
                 </td>
 
                 <td>
+                    <a href="index.php?action=viewVisitor&id={{ visitor.id }}" id="singleVisitorLink">
                     {{ visitor.secondName }}
+                    </a>
                 </td>
 
                 <td>
+                    <a href="index.php?action=viewVisitor&id={{ visitor.id }}" id="singleVisitorLink">
                     {{ visitor.country }}
+                    </a>
                 </td>
 
                 <td>
+                    <a href="index.php?action=viewVisitor&id={{ visitor.id }}" id="singleVisitorLink">
                     {{ visitor.email }}
+                    </a>
                 </td>
 
                 {% if session.privilege == 'Administrator' %}

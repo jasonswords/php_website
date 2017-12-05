@@ -29,7 +29,7 @@ class VisitorRepository
         $this->connection->exec($sql);
     }
 
-    public function insertAccount(Visitor $v)
+    public function insertVisitor(Visitor $v)
     {
         $firstName = $v->getfirstName();
         $secondName = $v->getSecondName();
@@ -49,7 +49,7 @@ class VisitorRepository
 
     }
 
-    public function dropTableAccounts()
+    public function dropTableVisitorss()
     {
         $this->connection->exec('DROP TABLE visitors');
     }
@@ -79,6 +79,26 @@ class VisitorRepository
         if ($visitor = $stmt->fetch()) {
             return $visitor;
         } else {
+            return null;
+        }
+    }
+
+    public function getOneByName($name){
+        $sql = 'SELECT * FROM visitors WHERE firstName = :firstName';
+
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam('firstName', $name);
+        $stmt->execute();
+
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, 'ITB\\Visitor');
+
+        if($visitor = $stmt->fetch()){
+            return $visitor->getId();
+
+            var_dump($visitor);
+            die();
+        }
+        else{
             return null;
         }
     }

@@ -11,6 +11,10 @@ h2{
     text-decoration: underline;
 }
 
+h3{
+    color: green;
+}
+
 form{
     width:100%;
     margin:auto;
@@ -25,10 +29,6 @@ table{
 
 p{
     margin-left:1.5rem;
-}
-
-.image{
-    height:30%;
 }
 
 table th{
@@ -52,7 +52,6 @@ td {
     text-align: right;
     text-decoration: none;
     padding: .5rem;
-    color: deeppink;
 }
 
 #singleVisitor{
@@ -63,5 +62,9 @@ td {
 
 #firstName, #secondName, #country, #email{
     text-align:center;
+}
+
+a{
+    text-decoration: none;
 }
 

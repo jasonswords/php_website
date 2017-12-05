@@ -8,6 +8,10 @@ h1{
     color: #550a87;
 }
 
+p{
+    text-align: center;
+}
+
 #text{
     flex: 1 0 30%;
     width:60%;

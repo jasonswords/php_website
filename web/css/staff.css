@@ -42,6 +42,10 @@ td {
     color: #550a87;
 }
 
+a{
+    text-decoration: none;
+}
+
 #addStaffLink {
     text-align: right;
     text-decoration: none;

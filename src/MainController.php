@@ -44,19 +44,23 @@ class MainController
         print $html;
     }
 
-    public function aboutConfirmAction(){
+    public function aboutConfirmAction($id){
+        $visitorRepository = new VisitorRepository();
+        $visitor = $visitorRepository->getOneById($id);
+
         $template = 'aboutConfirm.html.twig';
         $argsArray = [
-            'pageTitle' => 'About'
+            'pageTitle' => 'About',
+            'visitor' => $visitor
         ];
         $html = $this->twig->render($template, $argsArray);
         print $html;
     }
 
-    public function siteMapAction(){
-        $template = 'siteMap.html.twig';
+    public function errorAction(){
+        $template = 'error.html.twig';
         $argsArray = [
-            'pageTitle' => 'Site Map'
+            'pageTitle' => 'Product Error'
         ];
         $html = $this->twig->render($template, $argsArray);
         print $html;

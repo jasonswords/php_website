@@ -28,7 +28,9 @@ table{
 }
 
 .image{
-    height:20%;
+    height:30%;
+    max-height: 8rem;
+    max-width: 8rem;
 }
 
 table th{
@@ -47,4 +49,8 @@ td{
     text-align:center;
     padding:.5rem;
     border-bottom:.1rem solid #550a87;
+}
+
+a{
+    text-decoration: none;
 }

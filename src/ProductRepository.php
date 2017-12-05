@@ -18,10 +18,10 @@ class ProductRepository
         $sql = 'CREATE TABLE products 
                     (
                     id INT AUTO_INCREMENT PRIMARY KEY, 
-                    name VARCHAR(100) NOT NULL,
+                    name VARCHAR(100),
                     description VARCHAR(255),
-                    image VARCHAR(255) NOT NULL,
-                    price FLOAT  NOT NULL,
+                    image VARCHAR(255),
+                    price FLOAT,
                     date TIMESTAMP
                     ); ';
 
@@ -30,6 +30,7 @@ class ProductRepository
 
     public function insertProduct(Product $p)
     {
+
         $name = $p->getName();
         $price = $p->getPrice();
         $image = $p->getImage();
@@ -80,14 +81,14 @@ class ProductRepository
         }
     }
 
-    public function getOneByName($name){
+    public function getIdByName($name){
         $sql = 'SELECT * FROM products WHERE name = :name';
 
         $stmt = $this->connection->prepare($sql);
         $stmt->bindParam('name', $name);
         $stmt->execute();
 
-        $stmt->setFetchMode(\PDO::FETCH_CLASS, 'ITB\\Product');
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, 'Itb\\Product');
 
         if($product = $stmt->fetch()){
             return $product->getId();
@@ -95,8 +96,6 @@ class ProductRepository
         else{
             return null;
         }
-
-
 }
 
     public function updateProductTable($id, $name, $description, $image, $price){

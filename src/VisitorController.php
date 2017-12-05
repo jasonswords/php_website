@@ -35,10 +35,15 @@ class VisitorController{
         print $html;
     }
 
-    public function processVisitorUpdateAction($id, $firstName, $secondName, $country, $email){
+    public function processVisitorUpdateAction(){
+        $id = filter_input(INPUT_POST, 'id');
+        $firstName = filter_input(INPUT_POST, 'firstName');
+        $secondName = filter_input(INPUT_POST, 'secondName');
+        $country = filter_input(INPUT_POST, 'country');
+        $email = filter_input(INPUT_POST, 'email');
         $visitorRepository = new VisitorRepository();
         $visitorRepository->updateVisitorTable($id, $firstName, $secondName, $country, $email);
-        header("Location: index.php?action=visitor");
+        header("Location: index.php?action=viewVisitor&id=<? $id >");
         exit();
     }
 
@@ -84,9 +89,11 @@ class VisitorController{
         $v->setEmail($email);
         $visitorRepository = new VisitorRepository();
         $visitorRepository->createTableAccounts();
-        $visitorRepository->insertAccount($v);
+        $visitorRepository->insertVisitor($v);
 
-        header("Location: index.php?action=aboutConfirm");
+        $id = $visitorRepository->getOneByName($firstName);
+
+        header("Location: index.php?action=aboutConfirm&id=<? $id >");
         exit();
     }
 }
