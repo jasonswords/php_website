@@ -133,13 +133,7 @@ class WebApplication
 
             case 'processProductUpdate':
                 if(isset($_SESSION['privilege']) == 'Administrator' || 'Standard Account') {
-                $id = filter_input(INPUT_POST, 'id');
-                $name = filter_input(INPUT_POST, 'name');
-                $description = filter_input(INPUT_POST, 'description');
-                $image = filter_input(INPUT_POST, 'image');
-                $price = filter_input(INPUT_POST, 'price');
-
-                $this->productController->processProductUpdateAction($id, $name, $description, $image, $price);
+                $this->productController->processProductUpdateAction();
                 }else{$this->mainController->indexAction();}
                 break;
 

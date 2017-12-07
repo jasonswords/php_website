@@ -93,9 +93,23 @@ class ProductController{
         exit();
     }
 
-    public function processProductUpdateAction($id, $name, $description, $image, $price){
+    public function processProductUpdateAction(){
+        $id = filter_input(INPUT_POST, 'id');
+        $name = filter_input(INPUT_POST, 'name');
+        $description = filter_input(INPUT_POST, 'description');
+        $price = filter_input(INPUT_POST, 'price');
+
+        $fileName = $this->uploadImage();
+
+        if($fileName != "."){
+            $imageName = $fileName;
+        }else{
+            $leagueRepo = new LeagueRepository();
+            $imageName = $leagueRepo->getImageById($id);
+        }
+
         $productRepository = new ProductRepository();
-        $productRepository->updateProductTable($id, $name, $description, $image, $price);
+        $productRepository->updateProductTable($id, $name, $description, $imageName, $price);
         header("Location: index.php?action=displaySingleProduct&id=<? $id >");
         exit();
     }

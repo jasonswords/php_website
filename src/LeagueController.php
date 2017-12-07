@@ -77,16 +77,22 @@ class LeagueController{
 
     public function processLeagueUpdateAction(){
 
-        $fileName = $this->uploadImage();
-
         $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
         $name = filter_input(INPUT_POST, 'name');
         $country = filter_input(INPUT_POST, 'country');
         $position = filter_input(INPUT_POST, 'position');
 
+        $fileName = $this->uploadImage();
+
+        if($fileName != "."){
+            $imageName = $fileName;
+        }else{
+            $leagueRepo = new LeagueRepository();
+            $imageName = $leagueRepo->getImageById($id);
+        }
+
         $leagueRepo = new LeagueRepository();
-        $leagueRepo->createTableLeague();
-        $leagueRepo->updateLeagueTable($id, $name, $country, $fileName, $position);
+        $leagueRepo->updateLeagueTable($id, $name, $country, $imageName, $position);
         header("Location: index.php?action=displaySingleMember&id=<? $id >");
         exit();
     }
@@ -111,6 +117,7 @@ class LeagueController{
     }
 
     public function uploadImage(){
+
         $storage = new \Upload\Storage\FileSystem(__DIR__ .'/../web/images');
         $file = new \Upload\File('upload', $storage);
 

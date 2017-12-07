@@ -22,7 +22,7 @@
 
 
 
-    <form action="/index.php?action=processProductUpdate"  method="post" >
+    <form action="/index.php?action=processProductUpdate"  method="post" enctype="multipart/form-data">
         {#<input type="hidden" name="action" value="processProductUpdate">#}
 
 
@@ -35,7 +35,7 @@
                 <br>
                 <label>Description:</label><textarea rows="10" cols="21" name="description" >{{ product.description }}</textarea>
                 <br>
-                <label>Image:</label><input type="file" name="image" value="{{ product.image }}">
+                <label>Image:</label><input type="file" name="upload" value="{{ product.image }}">
                 <br>
                 <label>Price:</label><input type="text"name="price" value="{{ product.price }}">
                 <br>
