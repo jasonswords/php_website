@@ -49,7 +49,12 @@ class LeagueController{
     public function addLeagueMemberAction(){
             $fileUpload = new FileUpload();
 
-            $fileName = $fileUpload->uploadImage();
+        if($fileUpload->fileWasUploaded()) {
+            $imageName = $fileUpload->uploadImage();
+        }
+        else{
+            $imageName = null;
+        }
 
             $name = filter_input(INPUT_POST, 'name');
             $country = filter_input(INPUT_POST, 'country');
@@ -58,7 +63,7 @@ class LeagueController{
             $l = new League();
             $l->setName($name);
             $l->setCountry($country);
-            $l->setDrone($fileName);
+            $l->setDrone($imageName);
             $l->setPosition($position);
 
             $leagueRepository = new LeagueRepository();

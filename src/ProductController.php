@@ -12,17 +12,24 @@ class ProductController{
     }
 
     public function processProductAction(){
+        $fileUpload = new FileUpload();
 
-        $fileName = $this->uploadImage();
+        if($fileUpload->fileWasUploaded()) {
+            $imageName = $fileUpload->uploadImage();
+        }
+        else{
+            $imageName = null;
+        }
 
         $name = filter_input(INPUT_POST, 'name');
         $price = filter_input(INPUT_POST, 'price');
         $description = filter_input(INPUT_POST, 'description');
 
+
         $p = new Product();
         $p->setName($name);
         $p->setPrice($price);
-        $p->setImage($fileName);
+        $p->setImage($imageName);
         $p->setDescription($description);
         $productRepository = new ProductRepository();
         $productRepository->createTableProducts();
