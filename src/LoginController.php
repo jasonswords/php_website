@@ -30,11 +30,11 @@ class LoginController
                 if (password_verify($password, $account->getPassword())) {
                     if (1 == $account->getPrivilege()) {
                         $privilege = 'Administrator';
-                    } else {
+                    } else if(0 == $account->getPrivilege()) {
                         $privilege = 'Standard Account';
                    }
-                    $_SESSION['username'] = 'Administrator';//$userName;
-                    $_SESSION['privilege'] = 'Administrator';//$privilege;
+                    $_SESSION['username'] = $userName;//$userName;
+                    $_SESSION['privilege'] = $privilege;//$privilege;
 
                     header("Location: index.php");
                     exit();
