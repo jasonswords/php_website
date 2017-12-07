@@ -47,8 +47,9 @@ class LeagueController{
     }
 
     public function addLeagueMemberAction(){
+            $fileUpload = new FileUpload();
 
-            $fileName = $this->uploadImage();
+            $fileName = $fileUpload->uploadImage();
 
             $name = filter_input(INPUT_POST, 'name');
             $country = filter_input(INPUT_POST, 'country');
@@ -77,18 +78,20 @@ class LeagueController{
 
     public function processLeagueUpdateAction(){
 
+        $fileUpload = new FileUpload();
+
         $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);
         $name = filter_input(INPUT_POST, 'name');
         $country = filter_input(INPUT_POST, 'country');
         $position = filter_input(INPUT_POST, 'position');
+        $imageName = filter_input(INPUT_POST, 'imageName');
 
-        $fileName = $this->uploadImage();
+        if($fileUpload->fileWasUploaded()) {
+            $fileName = $fileUpload->uploadImage();
 
-        if($fileName != "."){
-            $imageName = $fileName;
-        }else{
-            $leagueRepo = new LeagueRepository();
-            $imageName = $leagueRepo->getImageById($id);
+            if ($fileName != ".") {
+                $imageName = $fileName;
+            }
         }
 
         $leagueRepo = new LeagueRepository();
@@ -114,23 +117,5 @@ class LeagueController{
         ];
         $html = $this->twig->render($template, $args);
         print $html;
-    }
-
-    public function uploadImage(){
-
-        $storage = new \Upload\Storage\FileSystem(__DIR__ .'/../web/images');
-        $file = new \Upload\File('upload', $storage);
-
-        $file->addValidations(array(
-            new \Upload\Validation\Mimetype(array('image/png', 'image/gif', 'image/jpg', 'image/jpeg')),
-            new \Upload\Validation\Size('5M')
-        ));
-        try {
-            $file->upload();
-        } catch (\Exception $e) {
-
-        }
-
-        return $file->getNameWithExtension();
     }
 }

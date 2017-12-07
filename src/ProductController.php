@@ -94,18 +94,21 @@ class ProductController{
     }
 
     public function processProductUpdateAction(){
+
+        $fileUpload = new FileUpload();
+
         $id = filter_input(INPUT_POST, 'id');
         $name = filter_input(INPUT_POST, 'name');
         $description = filter_input(INPUT_POST, 'description');
         $price = filter_input(INPUT_POST, 'price');
+        $imageName = filter_input(INPUT_POST, 'imageName');
 
-        $fileName = $this->uploadImage();
+        if($fileUpload->fileWasUploaded()) {
+            $fileName = $fileUpload->uploadImage();
 
-        if($fileName != "."){
-            $imageName = $fileName;
-        }else{
-            $leagueRepo = new LeagueRepository();
-            $imageName = $leagueRepo->getImageById($id);
+            if ($fileName != ".") {
+                $imageName = $fileName;
+            }
         }
 
         $productRepository = new ProductRepository();
@@ -113,23 +116,5 @@ class ProductController{
         header("Location: index.php?action=displaySingleProduct&id=<? $id >");
         exit();
     }
-
-    public function uploadImage(){
-        $storage = new \Upload\Storage\FileSystem(__DIR__ .'/../web/images');
-        $file = new \Upload\File('upload', $storage);
-
-        $file->addValidations(array(
-            new \Upload\Validation\Mimetype(array('image/png', 'image/gif', 'image/jpg', 'image/jpeg')),
-            new \Upload\Validation\Size('5M')
-        ));
-        try {
-            $file->upload();
-        } catch (\Exception $e) {
-
-        }
-        return $file->getNameWithExtension();
-    }
-
-
 
 }

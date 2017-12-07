@@ -26,24 +26,26 @@
         {#<input type="hidden" name="action" value="processProductUpdate">#}
 
 
-                                    <h1>Edit Product</h1>
+        <h1>Edit Product</h1>
 
 
-                <label>Id:</label><input type="text" name="id" value="{{ product.id }}" readonly>
-                <br>
-                <label>Name:</label><input type="text" name="name" value="{{ product.name }}">
-                <br>
-                <label>Description:</label><textarea rows="10" cols="21" name="description" >{{ product.description }}</textarea>
-                <br>
-                <label>Image:</label><input type="file" name="upload" value="{{ product.image }}">
-                <br>
-                <label>Price:</label><input type="text"name="price" value="{{ product.price }}">
-                <br>
+        <label id ="idLabel">Id:</label><input type="text" name="id" value="{{ product.id }}" readonly>
+        <p>
+        <label>Name:</label><input type="text" name="name" value="{{ product.name }}" autofocus>
+        <p>
+        <label>Description:</label><textarea rows="10" cols="21" name="description" >{{ product.description }}</textarea>
+        <p>
+        <label>Current Image:</label>{{ product.image }}
+        <input type="hidden" name="imageName" value="{{ product.image }}">
+        <p>
+        <label>Choose Image:</label><input type="file" name="upload" value="{{ product.image }}">
+        <p>
+        <label>Price:</label><input type="text"name="price" value="{{ product.price }}">
+        <p>
 
-                <label> </label><input type="submit" value="Update" id="submitButton">
+        <label> </label><input type="submit" value="Update" id="submitButton">
 
     </form>
-
 
 
 {% endblock %}

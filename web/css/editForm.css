@@ -13,12 +13,16 @@ input:focus{
 
 label{
     margin-bottom:1rem;
-    margin-left: 7rem;
+    margin-left: 5rem;
     text-align:left;
     display:block;
     float:left;
     width:7rem;
     color: #550a87;
+}
+
+#idLabel{
+    margin-left: 6.5rem;
 }
 
 

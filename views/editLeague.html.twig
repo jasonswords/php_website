@@ -28,15 +28,18 @@
 
 
         <label>Id:</label><input type="text" name="id" value="{{ league.id }}" readonly>
-        <br>
+        <p>
         <label>Name:</label><input type="text" name="name" value="{{ league.name }}" autofocus>
-        <br>
+        <p>
         <label>Country:</label><input type="text" name="country" value="{{ league.country }}">
-        <br>
-        <label>Drone:</label><input type="file" name="upload" value="{{ league.drone }}" id="fileToUpload">
-        <br>
+        <p>
+        <label>Current Image:</label>{{ league.drone }}
+        <input type="hidden" name="imageName" value="{{ league.drone }}">
+        <p>
+        <label>Choose Image:</label><input type="file" name="upload">
+        <p>
         <label>Position:</label><input type="text" name="position" value="{{ league.position }}" >
-        <br>
+        <p>
 
         <label> </label><input type="submit" value="Update" id="submitButton">
 
