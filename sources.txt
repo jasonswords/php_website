@@ -101,7 +101,7 @@ drone13.jpg
 https://s.aolcdn.com/hss/storage/midas/2ea8db4fe1a8d63100376f3eedd803c6/204767229/dracodronejt_1800.jpg
 
 code to upload image files
-https://www.w3schools.com/php/php_file_upload.asp
+https://packagist.org/packages/codeguy/upload
 
 errorImage.jpg
 https://www.webpagefx.com/blog/images/assets/images.sixrevisions.com/2010/05/26-13_error_page_chrisjennings.jpg
@@ -115,5 +115,5 @@ https://bestdroneforthejob.com/wp-content/uploads/2017/04/racing-drone-guide-ill
 infoDrone2.jpg
 http://1abxf1rh6g01lhm2riyrt55k-wpengine.netdna-ssl.com/wp-content/uploads/2015/03/mhq-explode.jpg
 
-dropneDEal.jpg
+droneinfo.jpg
 https://i.ytimg.com/vi/z2Q2KdhtmFA/maxresdefault.jpg

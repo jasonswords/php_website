@@ -64,6 +64,11 @@ class WebApplication
                 $this->staffController->staffErrorAction($id);
                 break;
 
+            case 'staffPrivilegeError':
+                $id = filter_input(INPUT_GET, 'id');
+                $this->staffController->staffPrivilegeErrorAction($id);
+                break;
+
             case 'createStaff':
                 if (isset($_SESSION['privilege']) && $_SESSION['privilege'] == 'Administrator') {
                 $this->staffController->createStaffAction();
