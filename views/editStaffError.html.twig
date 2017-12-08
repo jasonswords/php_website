@@ -10,7 +10,8 @@
 
 {% block main %}
 
-    <form action="/index.php?action=processStaffUpdate"  method="post" >
+    <form action="/index.php"  method="post" >
+        <input type="hidden" name="action" value="processStaffUpdate">
 
         <h2 id="message"> Error..... Passwords do not match</h2>
         <h2 id="message">Please try again</h2>

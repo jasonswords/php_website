@@ -10,8 +10,6 @@ class WebApplication
     private $leagueController;
     private $productController;
     private $visitorController;
-    private $errorController;
-    
 
     const PATH_TO_TEMPLATES = __DIR__ . '/../views';
 
@@ -30,7 +28,9 @@ class WebApplication
     public function run()
     {
         $action = filter_input(INPUT_GET, 'action');
-
+        if(empty($action)) {
+            $action = filter_input(INPUT_POST, 'action');
+        }
         switch($action) {
 
 //              ----------------------  Login   ------------------------------------------------------------------------

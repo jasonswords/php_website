@@ -65,9 +65,10 @@
 
     <div id="visitor">
 
-            <form action="index.php?action=processVisitorForm" method="post">
+        <form action="/index.php" method="post">
+            <input type="hidden" name="action" value="processVisitorForm">
 
-                <h1>Sign me up</h1>
+            <h1>Sign me up</h1>
 
                 <label>First Name:</label><input type="text" name="firstName" placeholder="First Name" id="firstName">
                 <br>

@@ -12,22 +12,24 @@
 {% block main %}
 
 
-<form action= "/index.php?action=processLogin"  method= "post">
-    <h2>User Name or Password Were Incorrect</h2>
-    
-<h2>Account Login</h2>
+    <form action= "/index.php"  method= "post">
+        <input type="hidden" name="action" value="processLogin">
 
-    <label>Username:</label><input type="text" required placeholder="User name" name="userName" autofocus id="userName"><br><br>
-    
-    <label>Password:</label><input type="password" required  name="password" id="loginPassword"><br>
+        <h2>User Name or Password Were Incorrect</h2>
 
-    <br>
-    
-    <input type="submit" value="Submit" id="loginSubmit">
+        <h2>Account Login</h2>
 
-    <br><br>
+            <label>Username:</label><input type="text" required placeholder="User name" name="userName" autofocus id="userName"><br><br>
+
+            <label>Password:</label><input type="password" required  name="password" id="loginPassword"><br>
+
+        <br>
+
+        <input type="submit" value="Submit" id="loginSubmit">
+
+        <br><br>
     
-</form>
+    </form>
 
 
 {% endblock %}
