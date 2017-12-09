@@ -123,4 +123,16 @@ class ProductRepository
         $stmt->execute();
     }
 
+    public function searchProduct($search){
+
+        $search = '%' . $search . '%';
+        $sql = "SELECT * from products WHERE (name LIKE :search) or (price LIKE :search) or (image LIKE :search) or (description LIKE :search)";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(':search', $search);
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, 'Itb\\Product');
+        $stmt->execute();
+        $product = $stmt->fetchAll();
+        return $product;
+    }
+
 }

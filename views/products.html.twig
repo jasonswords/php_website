@@ -19,6 +19,19 @@
 
 
     <table>
+        <div id="searchBox">
+            <form action="/index.php" method="post">
+                <input type="hidden" name="action" value="searchProducts">
+                    <p>
+                    Search Products:&nbsp;<input type="search" name="search">
+                    <p>
+                    <input type="submit" value="Search" id="searchSubmitButton">
+            </form>
+        </div>
+
+    {% if link == true %}
+        <a href="/index.php?action=displayProduct" id="backToProductsLink">Back To Products</a>
+    {% endif %}
 
         <tr>
             <th
@@ -28,7 +41,7 @@
             colspan="5"
             {% endif %}
             >
-                <h1>Products Available</h1>
+                <h1>{{ heading }}</h1>
 
     {% if session.privilege == ( 'Standard' or 'Administrator')  %}
                 <h2><a href="/index.php?action=addProduct" id="addProductLink">Add Product</a ></h2>
@@ -64,32 +77,32 @@
                 {% endif %}
 
                 <td>
-                    <a href="index.php?action=displaySingleProduct&id={{ product.id }}">
-                    {{ product.Name }}
+                    <a href="index.php?action=displaySingleProduct&id={{ product.id }}" class="linkColor">
+                    {{ product.name }}
+                    </a>
+                </td>
+                <td>
+                    <a href="index.php?action=displaySingleProduct&id={{ product.id }}" class="linkColor">
+                    &euro; {{ product.price }}
                     </a>
                 </td>
                 <td>
                     <a href="index.php?action=displaySingleProduct&id={{ product.id }}">
-                    &euro; {{ product.Price }}
+                        <img src="images/{{ product.image}}" alt="No Image" class="image" >
                     </a>
                 </td>
                 <td>
-                    <a href="index.php?action=displaySingleProduct&id={{ product.id }}">
-                        <img src="images/{{ product.Image}}" alt="No Image" class="image" >
-                    </a>
-                </td>
-                <td>
-                    <a href="index.php?action=displaySingleProduct&id={{ product.id }}">
-                    {{ product.Description}}
+                    <a href="index.php?action=displaySingleProduct&id={{ product.id }}" class="linkColor">
+                    {{ product.description}}
                     </a>
                 </td>
 
             {% if session.privilege == ( 'Standard' or 'Administrator')  %}
                 <td>
-                    <a href="index.php?action=editProduct&id={{ product.id }}">Edit</a>
+                    <a href="index.php?action=editProduct&id={{ product.id }}" class="linkColor">Edit</a>
                 </td>
                 <td>
-                    <a title="Delete User"  onClick="return confirm_click();" href="index.php?action=deleteProduct&id={{ product.id }}">Delete</a>
+                    <a title="Delete User"  onClick="return confirm_click();" href="index.php?action=deleteProduct&id={{ product.id }}" class="linkColor">Delete</a>
                 </td>
                 {% endif %}
 

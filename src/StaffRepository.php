@@ -120,4 +120,16 @@ class StaffRepository
 
         $stmt->execute();
     }
+
+    public function searchStaff($search){
+
+        $search = '%' . $search . '%';
+        $sql = "SELECT * from staff WHERE (userName LIKE :search) or (privilege LIKE :search)";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(':search', $search);
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, 'Itb\\Product');
+        $stmt->execute();
+        $staff = $stmt->fetchAll();
+        return $staff;
+    }
 }

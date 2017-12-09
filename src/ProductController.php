@@ -55,18 +55,45 @@ class ProductController{
         print $html;
     }
 
-    public function displayProductAction(){
+    public function displayProductAction($p, $heading, $link){
 
-        $products = new ProductRepository();
-        $p = $products->getAllProducts();
         $template = 'products.html.twig';
         $argsArray = [
             'pageTitle' => 'Products',
+            'heading' => $heading,
+            'link' => $link,
             'products'  => $p
         ];
         $html = $this->twig->render($template, $argsArray);
         print $html;
     }
+
+
+
+
+
+
+    public function displaySearchProductAction($searchString)
+    {
+        $productRepository = new ProductRepository();
+        $products = $productRepository->searchProduct($searchString);
+
+        if($products == null){
+            $this->displayProductAction(null, 'No Results Found', true);
+        }else {
+            $this->displayProductAction($products, 'Search Results', true);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 
     public function editProductAction($id){
 

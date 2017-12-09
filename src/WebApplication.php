@@ -90,7 +90,14 @@ class WebApplication
                 break;
 
             case 'staff':
-                $this->staffController->displayStaffAction();
+                $staff = new StaffRepository();
+                $staffMember = $staff->getAllStaff();
+                $this->staffController->displayStaffAction($staffMember, 'Staff Table', null);
+                break;
+
+            case 'searchStaff':
+                $searchString = filter_input(INPUT_POST,'search');
+                $this->staffController->displaySearchStaffAction($searchString);
                 break;
 
             case 'processStaffUpdate':
@@ -128,12 +135,19 @@ class WebApplication
                 break;
 
             case 'displayProduct':
-                $this->productController->displayProductAction();
+                $products = new ProductRepository();
+                $p = $products->getAllProducts();
+                $this->productController->displayProductAction($p,'Products Available', null );
                 break;
 
             case 'displaySingleProduct':
                 $id = filter_input(INPUT_GET, 'id',FILTER_SANITIZE_NUMBER_INT);
                 $this->productController->displaySingleProductAction($id);
+                break;
+
+            case 'searchProducts':
+                $searchString = filter_input(INPUT_POST,'search');
+                $this->productController->displaySearchProductAction($searchString);
                 break;
 
             case 'processProductUpdate':
@@ -183,7 +197,14 @@ class WebApplication
 //                ---------------------------  League Page  ----------------------------------------------------------
 
             case 'leaguePage':
-                $this->leagueController->leaguePage();
+                $leagueRepo = new LeagueRepository();
+                $leagueMember = $leagueRepo->getAllLeague();
+                $this->leagueController->leaguePage($leagueMember, 'Drone League', null);
+                break;
+
+            case 'searchLeague':
+                $searchString = filter_input(INPUT_POST,'search');
+                $this->leagueController->displaySearchLeagueAction($searchString);
                 break;
 
             case 'editLeagueMember':
@@ -226,15 +247,15 @@ class WebApplication
 //                ---------------------------  Database   -------------------------------------------------------------
 
             case 'setup':
-               // if (isset($_SESSION['privilege']) && $_SESSION['privilege'] == 'Administrator') {
+                if (isset($_SESSION['privilege']) && $_SESSION['privilege'] == 'Administrator') {
                 $this->mainController->setupDatabaseAction();
-               // }else{$this->mainController->indexAction();}
+                }else{$this->mainController->indexAction();}
                 break;
 
             case 'delete':
-               // if (isset($_SESSION['privilege']) && $_SESSION['privilege'] == 'Administrator') {
+                if (isset($_SESSION['privilege']) && $_SESSION['privilege'] == 'Administrator') {
                 $this->mainController->deleteDatabaseAction();
-                //}else{$this->mainController->indexAction();}
+                }else{$this->mainController->indexAction();}
                 break;
 
             case 'gallery':

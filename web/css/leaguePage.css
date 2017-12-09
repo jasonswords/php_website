@@ -10,7 +10,6 @@ form{
 }
 
 h1{
-    font-size: 2rem;
     color:#550a87;
 }
 
@@ -53,4 +52,38 @@ td{
 
 a{
     text-decoration: none;
+}
+
+#heading{
+    margin-top:-2rem;
+}
+
+#searchBox{
+    margin-left:10%;
+    margin-top: 1rem;
+    margin-bottom: -3.5rem;
+    border:.2rem solid #550a87;
+    width: 20%;
+    padding-left:1rem;
+}
+
+#searchSubmitButton{
+    margin-left:8rem;
+}
+
+#backToLeaguePage{
+    padding: 1rem;
+    margin-top:-1rem;
+    margin-bottom: -2rem;
+    margin-left:80%;
+    color: red;
+}
+
+#backToLeaguePage:hover{
+    color:green;
+}
+
+.linkColor:hover{
+    color:green;
+    padding:1rem;
 }

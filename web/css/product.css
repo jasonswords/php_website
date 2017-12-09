@@ -57,6 +57,34 @@ a{
     color: deeppink;
 }
 
+#searchBox{
+    margin-left:10%;
+    margin-top: 1rem;
+    margin-bottom: -8.5rem;
+    border:.2rem solid #550a87;
+    width: 20%;
+}
+
+#searchSubmitButton{
+    margin-left:8rem;
+}
+
+#backToProductsLink{
+    padding: 1rem;
+    margin-top:3rem;
+    margin-bottom: -6rem;
+    margin-left:80%;
+    color:red;
+}
+
+.linkColor:hover{
+    color:green;
+    padding:1rem;
+}
+
+#backToProductsLink:hover{
+    color:green;
+}
 
 
 

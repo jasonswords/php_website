@@ -4,13 +4,20 @@
 namespace Itb;
 
 
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
 class LoginController
 {
     private $twig;
+    private $logger;
 
     public function __construct($twig)
     {
         $this->twig = $twig;
+        $this->logger = new Logger('Login');
+        $this->logger->pushHandler(new StreamHandler(__DIR__ . '/../logger/log.txt', Logger::DEBUG));
+
     }
 
     public function processLoginAction()
@@ -24,7 +31,8 @@ class LoginController
             $account = $staffRepository->getOneByUserName($userName);
 
             if (null == $account) {
-               header("Location: index.php?action=loginError");
+                $this->logger->info('Failed Login Attempt using user name '.$userName);
+                header("Location: index.php?action=loginError");
                 exit();
             } else {
                 if (password_verify($password, $account->getPassword())) {
@@ -33,17 +41,21 @@ class LoginController
                     } else if(0 == $account->getPrivilege()) {
                         $privilege = 'Standard Account';
                    }
-                    $_SESSION['username'] = $userName;//$userName;
-                    $_SESSION['privilege'] = $privilege;//$privilege;
+                    $_SESSION['username'] = $userName;
+                    $_SESSION['privilege'] = $privilege;
+
+                    $this->logger->info($_SESSION['username'].' with privilege level '.$_SESSION['privilege'].' has just logged in');
 
                     header("Location: index.php");
                     exit();
                } else {
+                    $this->logger->info('Incorrect password used by '.$userName. ' attempting to log in');
                     header("Location: index.php?action=loginError");
                     exit();
                 }
             }
         }else{
+            $this->logger->error('Empty user name used to try log in');
             header("Location: index.php?action=loginError");
             exit();
         }
@@ -70,6 +82,7 @@ class LoginController
     }
 
     public function deleteSession(){
+        $this->logger->info($_SESSION['username'].' with privilege level '.$_SESSION['privilege'].' has just logged out');
         $_SESSION = [];
 
         if (ini_get('session.use_cookies')){

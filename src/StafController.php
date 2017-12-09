@@ -13,16 +13,28 @@ class StafController
         $this->twig = $twig;
     }
 
-    public function displayStaffAction(){
-        $staff = new StaffRepository();
-        $staffMember = $staff->getAllStaff();
+    public function displayStaffAction($s, $heading, $bool){
+
         $template = 'staff.html.twig';
         $argsArray = [
             'pageTitle' => 'Staff',
-            'staff'  => $staffMember
+            'heading' => $heading,
+            'link' => $bool,
+            'staff'  => $s
         ];
         $html = $this->twig->render($template, $argsArray);
         print $html;
+    }
+
+    public function displaySearchStaffAction($searchString){
+        $staffRepository = new StaffRepository();
+        $searchResults = $staffRepository->searchStaff($searchString);
+
+            if($searchResults == null) {
+                $this->displayStaffAction($searchResults, 'No Results Found', true);
+            }else{
+                $this->displayStaffAction($searchResults, 'Search Results', true);
+            }
     }
 
     public function createStaffAction(){

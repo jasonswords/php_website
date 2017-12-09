@@ -1,0 +1,5 @@
+[2017-12-09 00:48:57] Login.INFO: admin with privilege level Administrator has just logged out [] []
+[2017-12-09 00:49:20] Login.INFO: admin with privilege level Administrator has just logged in [] []
+[2017-12-09 00:49:52] Login.INFO: admin with privilege level Administrator has just logged out [] []
+[2017-12-09 00:56:37] Login.INFO: Failed Login Attempt using user name mark [] []
+[2017-12-09 00:58:11] Login.INFO: Incorrect password used by admin attempting to log in [] []

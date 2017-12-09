@@ -22,6 +22,20 @@
 
     <table>
 
+        <div id="searchBox">
+            <form action="/index.php" method="post">
+                <input type="hidden" name="action" value="searchStaff">
+                <p>
+                    Search Staff:&nbsp;<input type="search" name="search">
+                <p>
+                    <input type="submit" value="Search" id="searchSubmitButton">
+            </form>
+        </div>
+
+        {% if link == true %}
+            <a href="/index.php?action=staff" id="backToStaffLink">Back To Staff Table</a>
+        {% endif %}
+
         <tr>
 
             <th
@@ -32,7 +46,7 @@
         colspan="5"
         {% endif %}
             >
-                <h1>Staff</h1>
+                <h1>{{ heading }}</h1>
 
     {% if session.privilege == 'Administrator' %}
                 <h2><a href="/index.php?action=createStaff" id="addStaffLink">Add Staff</a></h2>
@@ -76,10 +90,10 @@
 
             {% if session.privilege == 'Administrator' %}
                 <td>
-                    <a href="/index.php?action=editStaff&id={{ member.id }}">Edit</a>
+                    <a href="/index.php?action=editStaff&id={{ member.id }}" class="linkColor">Edit</a>
                 </td>
                 <td>
-                    <a title="Delete User" onClick="return confirm_click();"  href="/index.php?action=deleteStaff&id={{ member.id }}">Delete</a>
+                    <a title="Delete User" onClick="return confirm_click();"  href="/index.php?action=deleteStaff&id={{ member.id }}" class="linkColor">Delete</a>
                 </td>
                 {% endif %}
             </tr>

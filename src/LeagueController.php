@@ -11,16 +11,27 @@ class LeagueController{
         $this->twig = $twig;
     }
 
-    public function leaguePage(){
-        $leagueRepo = new LeagueRepository();
-        $leagueMember = $leagueRepo->getAllLeague();
+    public function leaguePage($l, $heading, $link){
+
         $template = 'league.html.twig';
         $args = [
             'pageTitle' => 'League Results',
-            'leagueMember' => $leagueMember
+            'heading' => $heading,
+            'link' => $link,
+            'leagueMember' => $l
         ];
         $html = $this->twig->render($template, $args);
         print $html;
+    }
+
+    public function displaySearchLeagueAction($searchString){
+        $leagueRepository = new LeagueRepository();
+        $leagueMembers = $leagueRepository->searchLeague($searchString);
+        if($leagueMembers == null){
+            $this->leaguePage($leagueMembers, 'No Results Found', true);
+        }else {
+            $this->leaguePage($leagueMembers, 'Search Results', true);
+        }
     }
 
     public function editLeagueMemberAction($id){

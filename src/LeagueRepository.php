@@ -163,4 +163,16 @@ class LeagueRepository
 
         $stmt->execute();
     }
+
+    public function searchLeague($search){
+
+        $search = '%' . $search . '%';
+        $sql = "SELECT * from league WHERE (name LIKE :search) or (country LIKE :search) or (drone LIKE :search) or (position LIKE :search)";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(':search', $search);
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, 'Itb\\League');
+        $stmt->execute();
+        $league = $stmt->fetchAll();
+        return $league;
+    }
 }

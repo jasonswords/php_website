@@ -54,3 +54,41 @@ a{
 }
 
 
+
+
+
+#searchBox{
+    margin-left:10%;
+    margin-top: 2rem;
+    margin-bottom: -10rem;
+    padding-top: 1.5rem;
+    border:.2rem solid #550a87;
+    width: 20%;
+}
+
+
+
+
+
+#searchSubmitButton{
+    margin-left:8rem;
+}
+
+#backToStaffLink{
+    padding: 1rem;
+    margin-top:3rem;
+    margin-bottom: -6rem;
+    margin-left:80%;
+    color:red;
+}
+
+.linkColor:hover{
+    color:green;
+    padding:.5rem;
+}
+
+#backToStaffLink:hover{
+    color:green;
+}
+
+
