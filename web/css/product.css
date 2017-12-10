@@ -32,7 +32,7 @@ p{
 table th{
     color: #550a87;
     padding:1rem;
-    border-bottom: .1rem solid #550a87;
+    border-bottom: .2rem solid #550a87;
 }
 
 table tr{
@@ -58,15 +58,21 @@ a{
 }
 
 #searchBox{
-    margin-left:10%;
+    margin-left:4%;
     margin-top: 1rem;
     margin-bottom: -8.5rem;
-    border:.2rem solid #550a87;
-    width: 20%;
+    /*border:.2rem solid #550a87;*/
+    width: 30%;
+    color: #550a87;
 }
 
 #searchSubmitButton{
-    margin-left:8rem;
+    margin-left:9.5rem;
+    border:.2rem solid green;
+}
+
+#searchField{
+    border:.2rem solid green;
 }
 
 #backToProductsLink{

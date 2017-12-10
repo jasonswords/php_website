@@ -59,16 +59,22 @@ a{
 }
 
 #searchBox{
-    margin-left:10%;
+    margin-left:5%;
     margin-top: 1rem;
     margin-bottom: -3.5rem;
-    border:.2rem solid #550a87;
-    width: 20%;
+    /*border:.2rem solid #550a87;*/
+    width: 30%;
     padding-left:1rem;
+    color: #550a87;
 }
 
 #searchSubmitButton{
-    margin-left:8rem;
+    margin-left:9rem;
+    border:.2rem solid green;
+}
+
+#searchField{
+    border:.2rem solid green;
 }
 
 #backToLeaguePage{

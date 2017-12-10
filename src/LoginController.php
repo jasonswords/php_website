@@ -15,7 +15,7 @@ class LoginController
     public function __construct($twig)
     {
         $this->twig = $twig;
-        $this->logger = new Logger('Login');
+        $this->logger = new Logger('PHP Website');
         $this->logger->pushHandler(new StreamHandler(__DIR__ . '/../logger/log.txt', Logger::DEBUG));
 
     }
@@ -39,7 +39,7 @@ class LoginController
                     if (1 == $account->getPrivilege()) {
                         $privilege = 'Administrator';
                     } else if(0 == $account->getPrivilege()) {
-                        $privilege = 'Standard Account';
+                        $privilege = 'Staff Account';
                    }
                     $_SESSION['username'] = $userName;
                     $_SESSION['privilege'] = $privilege;

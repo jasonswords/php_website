@@ -18,14 +18,14 @@
 {% block main %}
 
 
-    <table>
+<table>
         <div id="searchBox">
             <form action="/index.php" method="post">
                 <input type="hidden" name="action" value="searchProducts">
                     <p>
-                    Search Products:&nbsp;<input type="search" name="search">
+                    Search Products Table:&nbsp;<input type="search" name="search" id="searchField" autofocus>
                     <p>
-                    <input type="submit" value="Search" id="searchSubmitButton">
+                <input type="submit" value="Search" id="searchSubmitButton">
             </form>
         </div>
 
@@ -35,40 +35,41 @@
 
         <tr>
             <th
-    {% if session.privilege == ( 'Standard' or 'Administrator')  %}
-        colspan="7"
-        {% else %}
-            colspan="5"
-            {% endif %}
-            >
-                <h1>{{ heading }}</h1>
+                {% if session.privilege == ( 'Staff Account' or 'Administrator')  %}
+                    colspan="7"
+                {% else %}
+                    colspan="5"
+                {% endif %}
+                    >
+                    <h1>{{ heading }}</h1>
 
-    {% if session.privilege == ( 'Standard' or 'Administrator')  %}
-                <h2><a href="/index.php?action=addProduct" id="addProductLink">Add Product</a ></h2>
-        {% endif %}
+                 {% if session.privilege == ( 'Staff Account' or 'Administrator')  %}
+                    <h2><a href="/index.php?action=addProduct" id="addProductLink">Add Product</a ></h2>
+                {% endif %}
             </th>
         </tr>
+            {% if heading != 'No Product Data Available' %}
+                <tr>
+                    {% if session.privilege == ( 'Staff Account' or 'Administrator')  %}
+                            <th>Id</th>
+                    {% endif %}
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Price</th>
 
-        <tr>
-    {% if session.privilege == ( 'Standard' or 'Administrator')  %}
-            <th>Id</th>
-        {% endif %}
-            <th>Name</th>
-            <th>Price</th>
-            <th>Image</th>
-            <th>Description</th>
 
-    {% if session.privilege == ( 'Standard' or 'Administrator')  %}
-            <th>Edit</th>
-            <th>Delete</th>
-        {% endif %}
-
-        </tr>
+                    {% if session.privilege == ( 'Staff Account' or 'Administrator')  %}
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    {% endif %}
+                </tr>
+            {% endif %}
 
         {% for product in products %}
 
             <tr>
-            {% if session.privilege == ( 'Standard' or 'Administrator')  %}
+            {% if session.privilege == ( 'Staff Account' or 'Administrator')  %}
                 <td>
                     <a href="index.php?action=displaySingleProduct&id={{ product.id }}">
                     {{ product.id }}
@@ -83,7 +84,7 @@
                 </td>
                 <td>
                     <a href="index.php?action=displaySingleProduct&id={{ product.id }}" class="linkColor">
-                    &euro; {{ product.price }}
+                        {{ product.description}}
                     </a>
                 </td>
                 <td>
@@ -93,11 +94,11 @@
                 </td>
                 <td>
                     <a href="index.php?action=displaySingleProduct&id={{ product.id }}" class="linkColor">
-                    {{ product.description}}
+                        &euro; {{ product.price }}
                     </a>
                 </td>
 
-            {% if session.privilege == ( 'Standard' or 'Administrator')  %}
+            {% if session.privilege == ( 'Staff Account' or 'Administrator')  %}
                 <td>
                     <a href="index.php?action=editProduct&id={{ product.id }}" class="linkColor">Edit</a>
                 </td>

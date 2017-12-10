@@ -17,35 +17,42 @@
 
 
 {% block main %}
-<br>
+
     <table>
         <tr>
+
             <th
-    {% if session.privilege == 'Administrator' %}
-        colspan="8"
-        {% else %}
-            colspan="5"
-            {% endif %}
-            >
-            <h1>Visitors</h1>
+                {% if session.privilege == 'Administrator' %}
+                    colspan="8"
+                {% else %}
+                    colspan="5"
+                {% endif %}
+                     >
+                <h1>{{ heading }}</h1>
             </th>
+
         </tr>
 
-        <tr>
-            <th>Id</th>
-            <th>First Name</th>
-            <th>Second Name</th>
-            <th>Country</th>
-            <th>Email</th>
-    {% if session.privilege == 'Administrator' %}
-            <th>Edit</th>
-            <th>Delete</th>
+        {% if heading != 'No Visitors Data Available' %}
+            <tr>
+
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Second Name</th>
+                <th>Country</th>
+                <th>Email</th>
+
+                {% if session.privilege == 'Administrator' %}
+                    <th>Edit</th>
+                    <th>Delete</th>
+                {% endif %}
+
+            </tr>
         {% endif %}
-        </tr>
 
         {% for visitor in visitors %}
-
             <tr>
+
                 <td>
                     {{ visitor.id }}
                 </td>
@@ -77,20 +84,16 @@
                 {% if session.privilege == 'Administrator' %}
                 <td>
                     <a href="index.php?action=editVisitor&id={{ visitor.id }}">Edit</a>
-
                 </td>
+
                 <td>
                     <a title="Delete User" onClick="return confirm_click();"  href="index.php?action=deleteVisitor&id={{ visitor.id }}">Delete</a>
                 </td>
                 {% endif %}
+
             </tr>
-
-
         {% endfor %}
 
     </table>
-
-
-
 
 {% endblock %}

@@ -13,6 +13,9 @@ class LeagueController{
 
     public function leaguePage($l, $heading, $link){
 
+        if(empty($l)){
+            $heading = 'No League Data Available';
+        }
         $template = 'league.html.twig';
         $args = [
             'pageTitle' => 'League Results',

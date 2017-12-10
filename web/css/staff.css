@@ -27,7 +27,7 @@ p{
 
 table th{
     padding:1rem;
-    border-bottom: .1rem solid #550a87;
+    border-bottom: .2rem solid #550a87;
     color: #550a87;
 }
 
@@ -53,25 +53,27 @@ a{
     color: deeppink;
 }
 
-
-
-
+.privilegeColumn{
+    color:red;
+}
 
 #searchBox{
-    margin-left:10%;
+    margin-left:5%;
     margin-top: 2rem;
     margin-bottom: -10rem;
     padding-top: 1.5rem;
-    border:.2rem solid #550a87;
-    width: 20%;
+    /*border:.2rem solid #550a87;*/
+    width: 30%;
+    color: #550a87;
 }
 
-
-
-
+#searchField{
+    border:.2rem solid green;
+}
 
 #searchSubmitButton{
     margin-left:8rem;
+    border:.2rem solid green;
 }
 
 #backToStaffLink{

@@ -2,25 +2,14 @@
 
 {% block css %}
 
-    @import "/css/product.css";
     @import "/css/editForm.css";
 
 {% endblock %}
 
 
 
-{% block header %}
-
-
-
-{% endblock %}
-
-
 
 {% block main %}
-
-
-
 
     <form action="/index.php"  method="post" enctype="multipart/form-data">
         <input type="hidden" name="action" value="processProductUpdate">
@@ -37,8 +26,8 @@
         <p>
         <label>Current Image:</label>{{ product.image }}
         <input type="hidden" name="imageName" value="{{ product.image }}">
-        <p>
-        <label>Choose Image:</label><input type="file" name="upload" value="{{ product.image }}">
+        <br>
+        <label>Choose Image:</label><input type="file" name="upload">
         <p>
         <label>Price:</label><input type="text"name="price" value="{{ product.price }}">
         <p>
@@ -46,6 +35,5 @@
         <label> </label><input type="submit" value="Update" id="submitButton">
 
     </form>
-
 
 {% endblock %}

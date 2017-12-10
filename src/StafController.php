@@ -15,6 +15,10 @@ class StafController
 
     public function displayStaffAction($s, $heading, $bool){
 
+        if(empty($s)){
+            $heading = 'No Staff Data Available';
+        }
+
         $template = 'staff.html.twig';
         $argsArray = [
             'pageTitle' => 'Staff',
@@ -122,7 +126,7 @@ class StafController
         $password = filter_input(INPUT_POST, 'password2');
         $privilege = filter_input(INPUT_POST, 'radioButton');
 
-        if(empty(null == $privilege)) {
+        if(null == $privilege) {
             header("Location: index.php?action=staffPrivilegeError");
             exit();
         }else {

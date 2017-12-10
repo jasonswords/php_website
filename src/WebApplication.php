@@ -199,7 +199,7 @@ class WebApplication
             case 'leaguePage':
                 $leagueRepo = new LeagueRepository();
                 $leagueMember = $leagueRepo->getAllLeague();
-                $this->leagueController->leaguePage($leagueMember, 'Drone League', null);
+                $this->leagueController->leaguePage($leagueMember, 'Drone Leader Board', null);
                 break;
 
             case 'searchLeague':
@@ -247,9 +247,9 @@ class WebApplication
 //                ---------------------------  Database   -------------------------------------------------------------
 
             case 'setup':
-                if (isset($_SESSION['privilege']) && $_SESSION['privilege'] == 'Administrator') {
+//                if (isset($_SESSION['privilege']) && $_SESSION['privilege'] == 'Administrator') {
                 $this->mainController->setupDatabaseAction();
-                }else{$this->mainController->indexAction();}
+//                }else{$this->mainController->indexAction();}
                 break;
 
             case 'delete':

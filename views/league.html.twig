@@ -24,47 +24,52 @@
 
         <div id="searchBox">
             <form action="/index.php" method="post">
-                <input type="hidden" name="action" value="searchLeague">
+                    <input type="hidden" name="action" value="searchLeague">
                 <p>
-                    Search Products:&nbsp;<input type="search" name="search">
+                    Search League Table:&nbsp;<input type="search" name="search" id="searchField" autofocus>
                 <p>
                     <input type="submit" value="Search" id="searchSubmitButton">
             </form>
         </div>
 
         {% if link == true %}
+
             <a href="/index.php?action=leaguePage" id="backToLeaguePage">Back To League Page</a>
+
         {% endif %}
 
         <tr>
-            <th
-    {% if session.privilege == 'Administrator'  %}
-        colspan="7"
-        {% else %}
-            colspan="5"
-            {% endif %}
-            >
-                <h1 id="heading">{{ heading }}</h1>
 
-    {% if session.privilege == 'Administrator'  %}
-                <h2><a href="/index.php?action=addLeagueMemberPage" id="addLink">Add Another Member</a></h2>
-        {% endif %}
+            <th
+                {% if session.privilege == 'Administrator'  %}
+                    colspan="7"
+                {% else %}
+                    colspan="5"
+                {% endif %}
+                    >
+                    <h1 id="heading">{{ heading }}</h1>
+
+                {% if session.privilege == 'Administrator'  %}
+                    <h2><a href="/index.php?action=addLeagueMemberPage" id="addLink">Add Member</a></h2>
+                {% endif %}
             </th>
 
         </tr>
 
-        <tr>
-            <th>Name</th>
-            <th>Country</th>
-            <th>Drone</th>
-            <th>World Ranking</th>
+            {% if heading != 'No League Data Available' %}
+                <tr>
+                        <th>World Ranking</th>
+                        <th>Name</th>
+                        <th>Drone</th>
+                        <th>Country</th>
 
-    {% if session.privilege == 'Administrator'  %}
-            <th>Edit</th>
-            <th>Delete</th>
-        {% endif %}
+                    {% if session.privilege == 'Administrator'  %}
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    {% endif %}
 
-        </tr>
+                 </tr>
+            {% endif %}
 
         {% for league in leagueMember %}
 
@@ -76,12 +81,12 @@
 
                     <td>
                         <a href="index.php?action=displaySingleMember&id={{ league.id }}" class="linkColor">
-                            {{ league.name }}
+                            {{ league.position }}
                         </a>
                     </td>
                     <td>
-                        <a href="index.php?action=displaySingleMember&id={{ league.id }}"class="linkColor" >
-                            {{ league.country }}
+                        <a href="index.php?action=displaySingleMember&id={{ league.id }}" class="linkColor">
+                            {{ league.name }}
                         </a>
                     </td>
                     <td>
@@ -90,8 +95,8 @@
                         </a>
                     </td>
                     <td>
-                        <a href="index.php?action=displaySingleMember&id={{ league.id }}" class="linkColor">
-                            {{ league.position }}
+                        <a href="index.php?action=displaySingleMember&id={{ league.id }}"class="linkColor" >
+                            {{ league.country }}
                         </a>
                     </td>
 

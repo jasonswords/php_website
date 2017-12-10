@@ -34,7 +34,7 @@
 
     <div id="headerRight">
 
-        {% if session.username == ('Standard Account' or 'Administrator') %}
+        {% if session.username == ('Staff Account' or 'Administrator') %}
         Welcome: <strong>{{ session.username }}</strong><br>
             You are: <strong>{{ session.privilege }}</strong><br>
             <a href="/index.php?action=logOut" id="mainLogin">Log out</a>
@@ -62,7 +62,7 @@
     </ul>
 </nav>
 
-{% if session.privilege == ( 'Standard Account' or 'Administrator')  %}
+{% if session.privilege == ( 'Staff Account' or 'Administrator')  %}
 
 <nav>
     <ul>

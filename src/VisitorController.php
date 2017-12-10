@@ -14,9 +14,16 @@ class VisitorController{
     public function visitorAction(){
         $visitorRepository = new VisitorRepository();
         $visitors = $visitorRepository->getAllVisitors();
+
+        if(empty($visitors)){
+            $heading = 'No Visitors Data Available';
+        }else{
+            $heading = 'Visitors Table';
+        }
         $template = 'visitor.html.twig';
         $args = [
             'pageTitle' => 'Visitor',
+            'heading' => $heading,
             'visitors' => $visitors
         ];
         $html = $this->twig->render($template, $args);

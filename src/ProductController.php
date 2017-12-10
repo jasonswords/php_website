@@ -57,6 +57,10 @@ class ProductController{
 
     public function displayProductAction($p, $heading, $link){
 
+        if(empty($p)){
+            $heading = 'No Product Data Available';
+        }
+
         $template = 'products.html.twig';
         $argsArray = [
             'pageTitle' => 'Products',

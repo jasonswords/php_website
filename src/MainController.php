@@ -68,20 +68,10 @@ class MainController
 
     public function setupDatabaseAction()
     {
-        if (isset($_SESSION['privilege']) && $_SESSION['privilege'] == 'Administrator') {
             include_once __DIR__ . '/../setup_Scripts/setupDatabase.php';
-        }
-        else{
-            $this->indexAction();
-        }
     }
 
     public function deleteDatabaseAction(){
-        if (isset($_SESSION['privilege']) && $_SESSION['privilege'] == 'Administrator') {
         include_once __DIR__ . '/../setup_Scripts/dropTables.php';
-        }
-        else{
-            $this->indexAction();
-        }
     }
 }

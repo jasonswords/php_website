@@ -25,10 +25,10 @@
         <div id="searchBox">
             <form action="/index.php" method="post">
                 <input type="hidden" name="action" value="searchStaff">
-                <p>
-                    Search Staff:&nbsp;<input type="search" name="search">
-                <p>
-                    <input type="submit" value="Search" id="searchSubmitButton">
+                    <p>
+                        Search Staff Table:&nbsp;<input type="search" name="search" id="searchField" autofocus>
+                    <p>
+                <input type="submit" value="Search" id="searchSubmitButton">
             </form>
         </div>
 
@@ -37,37 +37,34 @@
         {% endif %}
 
         <tr>
-
             <th
-
-    {% if session.privilege == 'Administrator' %}
-        colspan="7"
-        #{% else %}
-        colspan="5"
-        {% endif %}
-            >
-                <h1>{{ heading }}</h1>
-
-    {% if session.privilege == 'Administrator' %}
-                <h2><a href="/index.php?action=createStaff" id="addStaffLink">Add Staff</a></h2>
-        {% endif %}
-
+                {% if session.privilege == 'Administrator' %}
+                    colspan="7"
+                {% else %}
+                    colspan="5"
+                {% endif %}
+                        >
+                    <h1>{{ heading }}</h1>
+                {% if session.privilege == 'Administrator' %}
+                    <h2><a href="/index.php?action=createStaff" id="addStaffLink">Add Staff</a></h2>
+                {% endif %}
             </th>
         </tr>
 
-        <tr>
-            <th>Id</th>
-            <th>User Name</th>
-            <th>Password</th>
-            <th>Account</th>
-            {% if session.privilege == 'Administrator' %}
-            <th>Edit</th>
-            <th>Delete</th>
+        {% if heading != 'No Staff Data Available' %}
+            <tr>
+                    <th>Id</th>
+                    <th>User Name</th>
+                    <th>Password</th>
+                    <th>Account</th>
+                {% if session.privilege == 'Administrator' %}
+                    <th>Edit</th>
+                    <th>Delete</th>
                 {% endif %}
-        </tr>
+            </tr>
+        {% endif %}
 
         {% for member in staff %}
-
             <tr>
                 <td>
                     {{ member.id}}
@@ -80,21 +77,21 @@
                     {{ member.password}}
                 </td>
 
-                <td>
-            {% if member.privilege  == 1 %}
+                <td class="privilegeColumn">
+                    {% if member.privilege  == 1 %}
                         Admin
-            {% else %}
-                    Standard
-                {% endif %}
+                    {% else %}
+                        Standard
+                    {% endif %}
                 </td>
 
-            {% if session.privilege == 'Administrator' %}
-                <td>
-                    <a href="/index.php?action=editStaff&id={{ member.id }}" class="linkColor">Edit</a>
-                </td>
-                <td>
-                    <a title="Delete User" onClick="return confirm_click();"  href="/index.php?action=deleteStaff&id={{ member.id }}" class="linkColor">Delete</a>
-                </td>
+                {% if session.privilege == 'Administrator' %}
+                    <td>
+                        <a href="/index.php?action=editStaff&id={{ member.id }}" class="linkColor">Edit</a>
+                    </td>
+                    <td>
+                        <a title="Delete User" onClick="return confirm_click();"  href="/index.php?action=deleteStaff&id={{ member.id }}" class="linkColor">Delete</a>
+                    </td>
                 {% endif %}
             </tr>
 
