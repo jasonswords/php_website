@@ -4,20 +4,17 @@
 namespace Itb;
 
 
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
+
 
 class LoginController
 {
     private $twig;
     private $logger;
 
-    public function __construct($twig)
+    public function __construct($twig, $logger)
     {
         $this->twig = $twig;
-        $this->logger = new Logger('PHP Website');
-        $this->logger->pushHandler(new StreamHandler(__DIR__ . '/../logger/log.txt', Logger::DEBUG));
-
+        $this->logger = $logger;
     }
 
     public function processLoginAction()

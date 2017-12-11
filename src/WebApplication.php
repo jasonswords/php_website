@@ -2,6 +2,9 @@
 
 namespace Itb;
 
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
 class WebApplication
 {
     private $mainController;
@@ -15,13 +18,15 @@ class WebApplication
 
     public function __construct()
     {
+        $logger = new Logger('PHP Website');
+        $logger->pushHandler(new StreamHandler(__DIR__ . '/../logger/log.txt', Logger::DEBUG));
         $twig = new \Twig\Environment(new \Twig_Loader_Filesystem(self::PATH_TO_TEMPLATES));
-        $this->mainController = new MainController($twig);
-        $this->loginController = new LoginController($twig);
-        $this->staffController = new StafController($twig);
-        $this->leagueController = new LeagueController($twig);
-        $this->productController = new ProductController($twig);
-        $this->visitorController = new VisitorController($twig);
+        $this->mainController = new MainController($twig,$logger);
+        $this->loginController = new LoginController($twig,$logger);
+        $this->staffController = new StaffController($twig,$logger);
+        $this->leagueController = new LeagueController($twig,$logger);
+        $this->productController = new ProductController($twig,$logger);
+        $this->visitorController = new VisitorController($twig,$logger);
         $twig->addGlobal('session', $_SESSION);
     }
 

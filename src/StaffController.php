@@ -4,13 +4,15 @@
 namespace Itb;
 
 
-class StafController
+class StaffController
 {
     private $twig;
+    private $logger;
 
-    public function __construct($twig)
+    public function __construct($twig, $logger)
     {
         $this->twig = $twig;
+        $this->logger = $logger;
     }
 
     public function displayStaffAction($s, $heading, $bool){
@@ -64,6 +66,7 @@ class StafController
 
     public function deleteStaffAction($id){
         $staff = new StaffRepository();
+        $this->logger->info($_SESSION['username'].' has deleted a staff member');
         $staff->deleteOneUser($id);
         header("Location: index.php?action=staff");
         exit();

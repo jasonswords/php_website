@@ -5,10 +5,12 @@ namespace Itb;
 class MainController
 {
     private $twig;
+    private $logger;
 
-    public function __construct($twig)
+    public function __construct($twig, $logger)
     {
         $this->twig = $twig;
+        $this->logger = $logger;
     }
 
     public function indexAction(){
@@ -68,10 +70,12 @@ class MainController
 
     public function setupDatabaseAction()
     {
-            include_once __DIR__ . '/../setup_Scripts/setupDatabase.php';
+        $this->logger->info('Database has been created by '.$_SESSION['username']);
+        include_once __DIR__ . '/../setup_Scripts/setupDatabase.php';
     }
 
     public function deleteDatabaseAction(){
+        $this->logger->info('Database has been deleted by '.$_SESSION['username']);
         include_once __DIR__ . '/../setup_Scripts/dropTables.php';
     }
 }

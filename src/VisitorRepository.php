@@ -83,6 +83,23 @@ class VisitorRepository
         }
     }
 
+    public function getNameById($id){
+
+        $sql = 'SELECT * FROM visitors WHERE id = :id';
+
+        $stmt = $this->connection->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, 'Itb\\Visitor');
+
+        if ($visitor = $stmt->fetch()) {
+            return $visitor->getFirstName();
+        } else {
+            return null;
+        }
+    }
+
     public function getOneByName($name){
         $sql = 'SELECT * FROM visitors WHERE firstName = :firstName';
 
@@ -94,9 +111,6 @@ class VisitorRepository
 
         if($visitor = $stmt->fetch()){
             return $visitor->getId();
-
-            var_dump($visitor);
-            die();
         }
         else{
             return null;

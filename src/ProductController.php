@@ -5,10 +5,12 @@ namespace Itb;
 class ProductController{
 
     private $twig;
+    private $logger;
 
-    public function __construct($twig)
+    public function __construct($twig, $logger)
     {
         $this->twig = $twig;
+        $this->logger = $logger;
     }
 
     public function processProductAction(){

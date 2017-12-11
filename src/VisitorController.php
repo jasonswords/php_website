@@ -5,10 +5,12 @@ namespace Itb;
 class VisitorController{
 
     private $twig;
+    private $logger;
 
-    public function __construct($twig)
+    public function __construct($twig, $logger)
     {
         $this->twig = $twig;
+        $this->logger = $logger;
     }
 
     public function visitorAction(){
@@ -56,6 +58,8 @@ class VisitorController{
 
     public function deleteVisitorAction($id){
         $visitorRepository = new VisitorRepository();
+        $name = $visitorRepository->getNameById($id);
+        $this->logger->info('UserName: '.$_SESSION['username'].' has deleted '.$name.' from the visitors table');
         $visitorRepository->deleteOneVisitor($id);
         header("Location: index.php?action=visitor");
         exit();
