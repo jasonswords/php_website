@@ -4,9 +4,9 @@ namespace Itb;
 
 class Database
 {
-    const DB_NAME = 'project';
-    const DB_USER = 'root';
-    const DB_PASS = 'toor';
+    const DB_NAME = 'l564602_jason';
+    const DB_USER = 'l564602_jason';
+    const DB_PASS = 'G6nCy]ahggRd';
     const DB_HOST = 'localhost:3306';
 
     private $connection;
@@ -30,8 +30,6 @@ class Database
             var_dump($e);
         }
     }
-
-
 
 }
 

@@ -1,0 +1,5 @@
+# redirect from root to subdirectory
+RedirectMatch ^/$ /web/
+
+# redirect on 404 to subdirectory
+ErrorDocument 404 /web/index.php
