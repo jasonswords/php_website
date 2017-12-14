@@ -1,7 +1,7 @@
 {% extends '_template.html.twig' %}
 
 {% block css %}
-    @import "/css/product.css";
+    @import "css/product.css";
     {% endblock %}
 
 {% block displayProductCurrent %}
@@ -20,7 +20,7 @@
 
 <table>
         <div id="searchBox">
-            <form action="/index.php" method="post">
+            <form action="index.php" method="post">
                 <input type="hidden" name="action" value="searchProducts">
                     <p>
                     Search Products Table:&nbsp;<input type="search" name="search" id="searchField" autofocus>
@@ -30,7 +30,7 @@
         </div>
 
     {% if link == true %}
-        <a href="/index.php?action=displayProduct" id="backToProductsLink">Back To Products</a>
+        <a href="index.php?action=displayProduct" id="backToProductsLink">Back To Products</a>
     {% endif %}
 
         <tr>
@@ -44,7 +44,7 @@
                     <h1>{{ heading }}</h1>
 
                  {% if session.privilege == ( 'Staff Account' or 'Administrator')  %}
-                    <h2><a href="/index.php?action=addProduct" id="addProductLink">Add Product</a ></h2>
+                    <h2><a href="index.php?action=addProduct" id="addProductLink">Add Product</a ></h2>
                 {% endif %}
             </th>
         </tr>

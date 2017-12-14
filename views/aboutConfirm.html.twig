@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block css %}
-    @import "/css/about.css";
+    @import "css/about.css";
     {% endblock %}
 
 
@@ -57,7 +57,7 @@
         </div>
 
         <div id="aboutImage">
-            <img src="/images/aboutDrone.jpg" alt="Image of drone" width="500" height="350">
+            <img src="images/aboutDrone.jpg" alt="Image of drone" width="500" height="350">
         </div>
 
 
@@ -65,7 +65,7 @@
 
     <div id="visitor">
 
-        <form action="/index.php" method="post">
+        <form action="index.php" method="post">
             <input type="hidden" name="action" value="processVisitorForm">
 
             <h1>Sign me up</h1>

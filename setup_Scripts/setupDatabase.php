@@ -58,12 +58,12 @@ $staffRepository->createTableStaff();
 $staff = new \Itb\Staff();
 
 $staff->setUserName('staff');
-$staff->setPassword(password_hash('staff', PASSWORD_DEFAULT));
+$staff->setPassword(password_hash('jkd3654/]', PASSWORD_DEFAULT));
 $staff->setPrivilege(0);
 $staffRepository->insertUser($staff);
 
 $staff->setUserName('admin');
-$staff->setPassword(password_hash('admin', PASSWORD_DEFAULT));
+$staff->setPassword(password_hash('2342]/kasgt', PASSWORD_DEFAULT));
 $staff->setPrivilege(1);
 $staffRepository->insertUser($staff);
 
